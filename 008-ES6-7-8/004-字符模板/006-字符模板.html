@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-字符模板.html</title>
+</head>
+<body>
+	<button id="btn">添加</button>
+	<ul id="list">
+		
+	</ul>
+</body>
+<script>
+	let names = ['tom','leo','petter','jane'];
+	let oList = document.getElementById('list');
+	let oBtn = document.getElementById('btn');
+
+	oBtn.onclick = function(){
+		var html = '';
+		for(let i = 0;i<names.length;i++){
+			// html += '<li>'+names[i]+'</li>';
+			html += `<li>${names[i]}</li>`
+		}
+		oList.innerHTML = html;
+	}
+</script>
+</html>

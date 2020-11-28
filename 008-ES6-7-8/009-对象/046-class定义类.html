@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>046-class定义类.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// let p2 = new Person('Leo',88);
+	// console.log('p2:::',p2);
+	class Person{
+		constructor(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		showName(){
+			console.log('I am '+this.name)
+		}
+		showAge(){
+			console.log('I am '+this.age + ' years old');
+		}
+		static sayHello(){
+			console.log('Tom say hello everybody');
+		}
+	}
+
+	let p1 = new Person('Tom',20);
+	console.log('p1:::',p1);
+	p1.showName();
+	p1.showAge();
+	Person.sayHello();
+
+	class Student extends Person{
+		constructor(name,age,major){
+			super(name,age);
+			this.major = major;
+		}
+		showMajor(){
+			console.log('I am from '+this.major);
+		}
+		static sayHi(){
+			console.log('Tom sayHi to everybody');
+		}
+	}
+
+	let s1 = new Student('Petter',10,'computer');
+	console.log('s1:::',s1);
+	s1.showName();
+	s1.showAge();
+	s1.showMajor();
+	Student.sayHello();
+	Student.sayHi();
+</script>
+</html>

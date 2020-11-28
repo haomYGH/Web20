@@ -1,0 +1,75 @@
+.conatiner{
+    width: 300px;
+    margin: 0 auto;
+}
+.form-wrap{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    .van-field{
+        line-height: 40px;
+    }
+    .btn-cell{
+        padding: 0 12px;
+    }
+    .btn{
+        width: 100%;
+    }    
+}
+.link{
+    font-size: 12px;
+    color: @link-color;
+}
+.page{
+    margin-bottom: 40px;
+}
+.page-slide-enter-active, .page-slide-leave-active {
+  transition: opacity .3s;
+}
+
+.page-slide-enter, .page-slide-leave-to {
+  opacity: 0;
+}
+.overlay-page{
+    position: absolute;
+    top:0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #f5f5f5;    
+}
+//首页分类列表
+.home-categories-wrap{
+    .van-grid-item__content{
+        padding: 5px;
+        background-color: transparent;
+    }
+} 
+//订单列表中最底部的文字遮盖住底部导航栏
+.van-list__finished-text,.van-list__loading{
+    position: relative;
+    z-index: 1000;
+    background: #f5f5f5;
+}
+.van-list{
+    background-color: #fff;
+}
+//商品详情页面
+.product-detail{
+    margin-bottom: 50px;
+    font-size: 12px;
+    img {
+        background-size:contain;
+        width:90%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+}
+//添加购物车按钮
+.cart-btn{
+    font-size: 24px;
+    color: @primary-color;
+}
+

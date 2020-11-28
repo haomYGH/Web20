@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>020-函数参数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function show(name,age){
+		var name = name || 'Leo';
+		var age = age || 20;
+		console.log(name);
+		console.log(age);
+	}
+	// show('Tom',18);
+	show();
+	*/
+
+
+	function show(name='Leo',age=20){
+		console.log(name,age);
+	}
+	// show();
+	// show('Petter',99);
+
+	let i = 1;
+	function num(x = ++i){
+		console.log(x)
+	}
+	// num();//2
+	i = 5;
+	// num();//6
+
+	/*
+	function ajax(url,method='get',data='{name:"Tom"}'){
+		console.log(url);
+		console.log(method);
+		console.log(data);
+	}
+	*/
+	function ajax(url,{method='GET',data="{name:'Tom'}"}={}){
+		console.log(url);
+		console.log(method);
+		console.log(data);
+	}
+	// ajax('http:127.0.0.1:3000','post','{name="Leo"}');
+	// ajax('http:127.0.0.1:3000');
+
+
+	function total(...arr){
+		console.log(arr);
+	}
+	total(1,2,3);
+</script>
+</html>

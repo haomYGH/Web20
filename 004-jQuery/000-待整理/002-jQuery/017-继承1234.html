@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承</title>
+</head>
+<body>
+	Object.defineProperty()
+</body>
+<script>
+//1.通过原型链继承
+//子类.prototype = 父类.prototype;    //方法的继承
+//子类.prototype.方法= function(){子类的方法}//子类的方法
+//缺点：由于方法的继承是引用赋值，所以父类也会有子类的方法。(堆内存)
+
+//2.创建一个新的(栈内存),让他的this指向父类。方法用过遍历获得
+/*
+function 子类(属性1,属性2,属性3){
+    父类.call(this,属性1,属性2);//属性的继承
+    this.属性3 = 属性3; //子类的属性
+}
+//方法的继承
+for(i in 父类.prototype){
+    子类.prototype[i] = 父类.prototype[i];
+}
+子类.prototype.方法 = function(){} //子类的方法
+*/
+//缺点：for in不能遍历那些不可枚举的。如果父类的方法是不可枚举的就遍历不到
+//3.继承2的改进：能获得父类所有方法
+/*
+	function 子类(属性1,属性2,属性3){
+	    父类.call(this,属性1,属性2);//属性的继承，调用父类的构造方法
+	    this.属性3 = 属性3; //子类的属性
+	}
+//方法的继承
+	子类.prototype = new 父类();
+	//子类的prototype指向父类的实例。调用父类的构造方法
+	子类.prototype.方法 = function(){} //子类的方法
+*/
+//调用了2次父类的构造函数，在子类的原型上产生了不必要的的父类属性
+
+
+
+//继承4。消除继承3的缺点
+function 子类(属性1,属性2,属性3){
+    父类.call(this,属性1,属性2);//属性的继承
+    this.属性3 = 属性3; //子类的属性
+}
+//方法的继承
+子类.prototype = Object.create(父类.prototype);
+//Object.create(参数)会创建一个新对象,新创建对象的__proto__对象就是参数
+子类.prototype.constructor = 子类;
+子类.prototype.方法 = function(){} //子类的方法
+</script>
+</html>

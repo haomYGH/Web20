@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.App{
+	width: 500px;
+	margin: 50px auto;
+}
+.App input{
+    width: 400px;
+    height: 30px;
+    padding-left: 10px;
+    outline: none;
+}
+.App button{
+    width: 40px;
+    height: 32px;
+}
+
+.App ul{
+	margin-top: 20px;
+}
+.App li{
+	list-style: none;
+    line-height: 30px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-left: 1px solid #f00;
+    padding-left: 10px;
+    border-bottom: 1px dashed #ccc;
+    margin-bottom: 5px;
+}
+.App li:hover{
+    background-color: #ccc;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不适用循环，包括map,forEach等</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //不使⽤循环语句（包括map、forEach⽅法）实现⼀个100⻓度的数组，索引值和值相同
+    //的数组[0,1,2,3,4,5……..99]
+    var arr1 = new Array(100);
+    var arr2 = [...arr1.keys()];
+    console.log(arr2);
+</script>
+</html>

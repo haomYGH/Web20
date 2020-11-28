@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>防止多次点击</title>
+	<style>
+		div{
+			position: relative;
+			left:0;
+			top:100px;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<button>还原</button>
+	<button>移动</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	function Slient($elem){
+		this.$elem = $elem;
+		this.currentX = parseFloat(this.$elem.css('left'));//获取最新的left值
+		this.currentY = parseFloat(this.$elem.css('top'));//获取最新的left值
+	}
+	Slient.prototype = {
+		constructor:Slient,
+		to:function(x,y){
+			if(this.currentX == x && this.currentY == y) return;
+			this.$elem.trigger('move');
+			this.$elem.css({
+				left:x,
+				top:y
+			});
+			this.$elem.trigger('moved');
+			this.currentX = x;
+			this.currentY = y;
+		}
+	}
+	var move = new Slient($('div'));
+
+	//通过自定义事件完成显示前，显示后可能要做的事。(比如显示前获取数据)
+	$('div').on('move moved',function(ev){
+		// console.log(ev.type);//trigger的时候执行
+		//控制显示前
+		if(ev.type == 'move'){
+			console.log('即将显示');
+		}else if(ev.type == 'moved'){
+			console.log('显示后')
+		}
+	});
+	$('button').eq(0).on('click',function(){
+		console.log('点击');
+		move.to(0,100)
+	});
+	$('button').eq(1).on('click',function(){
+		console.log('点击');
+		move.to(200,200)
+	});	
+</script>
+</html>

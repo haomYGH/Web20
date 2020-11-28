@@ -1,0 +1,10 @@
+//与js函数格式差不多
+//设置的时候属性要用花括号，属性值前要用unit。@{attr}:unit(@val/10,px);
+.setAttr(@attr,@val){
+	@{attr}:unit(@val,px)
+}
+.box{
+	.setAttr(width,100);//设置宽度为100px。定义的时候unit第2个参数是单位，这里就可以不用单位了
+	height: 100px;
+	background-color: #f00;
+}

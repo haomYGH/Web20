@@ -1,0 +1,55 @@
+<!baiDOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns=" http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>体验盒子 － UEDBOX.COM</title>
+    </head>
+
+    <body>
+        <div style="height:80px; position:relative; overflow:hidden;">
+            <div id="rollText" style="font-size:12px;line-height:20px;">
+                <ul>
+                    <li><a href="">◇ 无间隙du文字向上滚动</a></li>
+                    <li><a href="">◇ 无间隙文字向上滚动</a></li>
+                    <li><a href="">◇ 无间隙文字向上滚动</a></li>
+                    <li><a href="">◇ 无间隙文字向上滚动</a></li>
+                    <li><a href="">◇ 无间隙文字向上滚动</a></li>
+                    <li><a href="">◇ 无间隙文字向上滚动</a></li>
+                    <li><a href="">◇ 无间隙文字向上滚动</a></li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var textDiv = document.getElementById("rollText");
+            var textList = textDiv.getElementsByTagName("a");
+            if (textList.length > 2) {
+                var textDat = textDiv.innerHTML;
+                var br = textDat.toLowerCase().indexOf("<li", textDat.toLowerCase().indexOf("<li") + 3);
+                textDiv.innerHTML = textDat + textDat + textDat.substr(0, br);
+                textDiv.style.cssText = "position:absolute; top:0";
+                var textDatH = textDiv.offsetHeight; MaxRoll();
+            }
+            var minTime, maxTime, divTop, newTop = 0;
+            function MinRoll() {
+                newTop++;
+                if (newTop <= divTop + 80) {
+                    textDiv.style.top = "-" + newTop + "px";
+                } else {
+                    clearInterval(minTime);
+                    maxTime = setTimeout(MaxRoll, 100);
+                }
+            }
+            function MaxRoll() {
+                divTop = Math.abs(parseInt(textDiv.style.top));
+                if (divTop >= 0 && divTop < textDatH - 80) {
+                    minTime = setInterval(MinRoll, 80);
+                } else {
+                    textDiv.style.top = 0; divTop = 0; newTop = 0; MaxRoll();
+                }
+            }
+        </script>
+    </body>
+
+    </html>

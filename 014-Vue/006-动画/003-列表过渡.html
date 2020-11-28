@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表动画</title>
+    <style>
+        *{margin: 0;
+        padding: 0;}
+        /*过渡类*/
+		.list-item {
+		  	display: inline-block;
+		  	margin-right: 10px;
+		}
+		.list-enter-active, .list-leave-active {
+		  	transition: all 1s;
+		}
+		.list-enter, .list-leave-to{
+		  	opacity: 0;
+		  	transform: translateY(30px);
+		}
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div>
+            <input v-model="inputVal" type="text"><button @click="addTask">新增</button>
+            <!-- <ul> -->
+            <transition-group tag="ul" name="list" appear>
+                <li
+                    v-for="(task,index) in tasks"
+                    :key="index+1"
+                    :task="task"
+                    @click="delTask(index)"
+                >
+                    {{task}}
+                </li>
+            <!-- </ul> -->
+            </transition-group>
+        </div>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    new Vue({
+        el:'#demo',
+        data:{
+            tasks:['吃饭','睡觉'],
+            inputVal:''
+        },
+        methods:{
+            addTask(){
+                if(this.inputVal){
+                    this.tasks.push(this.inputVal)
+                    this.inputVal=''
+                }
+            },
+            delTask(index){
+                // console.log(index)
+                // this.tasks.split(index,1)
+            }
+        }
+    });
+</script>
+</html>

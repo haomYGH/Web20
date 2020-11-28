@@ -1,0 +1,20 @@
+<view class='container article-detail'>
+  <view class='focus'>
+    <image class='focus-bg' src='{{img}}'></image>
+    <image bindtap='tapMusic' class='focus-music' src='{{isPlaying ? "/images/icon/music-stop.png" : "/images/icon/music-start.png"}}'></image>
+  </view>
+  <view class='head'>
+    <image class='avatar' src='{{avatar}}'></image>
+    <text class='author'>{{author}}</text>
+    <text class='text'>发表于</text>
+    <text class='time'>{{date}}</text>
+  </view>
+  <text class='title'>{{title}}</text>
+  <view class='operation'>
+    <image wx:if="{{isCollected}}" bindtap='tapCollect' class='operation-collection' src='/images/icon/collection.png'></image>
+    <image wx:else="{{isCollected}}" bindtap='tapCollect' class='operation-collection' src='/images/icon/collection-none.png'></image>
+    <image bindtap='tapShare' class='operation-share' src='/images/icon/share.png'></image>
+    <view class='operation-line'></view>    
+  </view>
+  <text class='content'>{{content}}</text>
+</view>

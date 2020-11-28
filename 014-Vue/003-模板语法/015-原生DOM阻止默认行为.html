@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>015-原生DOM阻止默认行为</title>
+</head>
+<body>
+    <div id="app">
+        <a @click="goBaidu($event)" href="https://www.baidu.com">百度</a>
+        <!-- a链接怎么阻止他默认提交行为 -->
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        methods:{
+            goBaidu(ev){
+                ev.preventDefault();//阻止默认行为
+            }
+        }
+    });
+</script>
+</html>

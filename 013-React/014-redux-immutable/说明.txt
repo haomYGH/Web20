@@ -1,0 +1,4 @@
+redux-immutable用于最外层store,作用是使最外层的对象也变成Map对象
+改变的是state.get('todolist')   =>  这个需要改变数据吗，数据改动不都是todolist里面的？
+immutable不还是必须引入的吗？那用redux-immutable有用吗？
+答：有用，作用是数据同一

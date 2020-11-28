@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-对象的扩展运算.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	let obj1 = {
+		name:'Tom',
+		age:18,
+		friends:{name:'Leo',age:20},
+		pets:['cat','tigger']
+	}
+	let obj2 = {...obj1}
+	console.log('obj1::',obj1);
+	console.log('obj2:::',obj2);
+	*/
+
+
+	//直接赋值,浅copy
+	/*
+	let obj1 = {
+		name:'Tom',
+		age:18,
+		friends:{name:'Leo',age:20},
+		pets:['cat','tigger']
+	}
+	let obj2 = obj1;
+	obj1.name = 'Petter';
+	obj1.friends.age = 99;
+	obj1.pets.push('dog');
+	console.log('obj1::',obj1);//Petter 99 dog
+	console.log('obj2:::',obj2);//Petter 99 dog
+	*/
+
+
+	//扩展运算,浅copy
+	let obj1 = {
+		name:'Tom',
+		age:18,
+		friends:{name:'Leo',age:20},
+		pets:['cat','tigger']
+	}
+	let obj2 = {...obj1};//{name:'Tom',age:18,friends:'指针地址',pets:'指针地址'}
+	obj1.name = 'Petter';
+	obj1.friends.age = 99;
+	obj1.pets.push('dog');
+	console.log('obj1::',obj1);//Petter 99 yes
+	console.log('obj2:::',obj2);//Tom 99 no
+
+	console.log(obj1 === obj2);//fasle
+</script>
+</html>

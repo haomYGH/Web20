@@ -1,0 +1,25 @@
+.count-box {
+	display: block;
+	text-align: center;
+	padding: 20px 0;
+	opacity: .8;
+	transition: all .2s;
+	&:hover {
+		text-decoration: none;
+		opacity: 1;
+		transform: scale(1.1);
+		color: #555;
+	}
+	&:focus {
+		text-decoration: none;
+	}
+	.count-num {
+		font-size: 40px;
+	}
+	.desc {
+		font-size: 18px;
+		.fa {
+			margin-right: 5px;
+		}
+	}
+}

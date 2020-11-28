@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>046-jsonp-taobao.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<ul id="list">
+		
+	</ul>
+</body>
+<script>
+	function handleBack(data){
+		oList.innerHTML = "";
+		var result = data.result;
+		for(var i = 0;i<result.length;i++){
+			var oLi = document.createElement('li');
+			oLi.innerHTML =result[i][0]; 
+			oList.appendChild(oLi);
+		}
+	}
+	/*
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		var oScript = document.createElement('script');
+		oScript.src = 'http://127.0.0.1:3001/?getData=handleBack';
+		document.body.appendChild(oScript);
+	}
+	*/
+	var oTxt = document.getElementById('txt');
+	var oList = document.getElementById('list');
+	oTxt.oninput = function(){
+		var val = oTxt.value;
+		var oScript = document.createElement('script');
+		oScript.src = "https://suggest.taobao.com/sug?code=utf-8&q="+val+"s&_ksTS=1589528414632_1497&callback=handleBack&k=1&area=c2c&bucketid=7";
+		document.body.appendChild(oScript);
+	}
+
+</script>
+</html>

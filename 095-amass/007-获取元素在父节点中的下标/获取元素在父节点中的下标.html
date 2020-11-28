@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取元素在父节点中的下标</title>
+</head>
+<body>
+    <ul>
+        <li>hello</li>
+        <li>hello</li>
+        <li id="mts">hello</li>
+        <li>hello</li>
+      </ul>
+</body>
+<script>
+    var elt=document.getElementById('mts');
+    console.log(elt);
+    var index = [].indexOf.call(elt.parentNode.querySelectorAll(elt.tagName),elt);
+    console.log(index);
+</script>
+</html>

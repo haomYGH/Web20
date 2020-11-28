@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model双向绑定</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <input v-model="message" type="text">
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message:'hello!!'
+        }
+    });
+
+    //双向绑定?
+    //使用v-model进行双向绑定，类似于react中的value = {this.state.task}加上onChange = {this.handleChenge.bind(this)}
+    //就是当值改变时，message和显示都跟着改变
+</script>
+</html>

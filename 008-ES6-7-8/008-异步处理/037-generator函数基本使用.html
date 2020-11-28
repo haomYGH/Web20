@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-generator函数基本使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function * gen (){
+		console.log('gen start ...');
+		yield 'data1 ok';
+		console.log('gen continue ...');
+		yield 'data2 ok';
+		console.log('gen end ...');
+		return 'data3 ok';
+	}
+	// console.log(gen);
+	// generator函数特点:
+	// 1.调用该函数并不会执行函数内部的代码
+	// 2.调用该函数会返回一个generator的一个遍历器对象
+	// 3.如果想要执行generator函数内部表达式需要调用遍历器对象上的next方法
+	const g = gen();
+	console.log(g.next());//{value: "data1 ok", done: false}
+	console.log(g.next());//{value: "data2 ok", done: false}
+	console.log(g.next());//{value: "data3 ok", done: true}
+
+	// console.log(g);
+</script>
+</html>

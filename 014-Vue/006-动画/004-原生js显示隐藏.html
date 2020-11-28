@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画-animate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+</head>
+<body>
+    <button>显示/隐藏</button>
+    <h1 class="animate__animated animate__bounce">An animated element</h1>
+</body>
+<script>
+    var oDom = document.querySelector('button');
+    var oH1 = document.querySelector('h1');
+    var isShow = false;
+    oDom.onclick = function(){
+        if(isShow){
+            oH1.style.display = "block"
+        }else{
+            oH1.style.display = "none"
+        }
+        isShow = !isShow;
+    }
+</script>
+</html>

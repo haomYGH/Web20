@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-ajax-test.html</title>
+</head>
+<body>
+	<!-- 封装ajax请求方法 -->
+	<button id="btn">获取信息</button>
+</body>
+<script>
+	function ajax(method,url,data,fnSucc,fnFail){
+		//1.生成ajax对象(购买电话)
+		var oAjax = new XMLHttpRequest();
+		if(method.toUpperCase() == 'POST'){
+			//2.建立连接(打电话建立连接)
+			oAjax.open(method,url,true);
+
+			//设置请求头信息
+			oAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+			//3.发送请求(问问题)
+			oAjax.send(data);
+		}else if(method.toUpperCase() == 'GET'){
+			if(data){
+				url = url + '?' + data;
+			}
+			//2.建立连接(打电话建立连接)
+			oAjax.open(method,url,true);
+			//3.发送请求(问问题)
+			oAjax.send();
+		}
+
+		//4.等待服务器返回数据(等待应答)
+		oAjax.onreadystatechange = function(){//监听事件等待数据返回
+			if(oAjax.readyState == 4){//数据完全返回
+				if(oAjax.status == 200){
+					try{
+						var data = oAjax.responseText;
+						typeof fnSucc == 'function' && fnSucc(data)
+					}catch(err){
+						console.log(err)
+					}
+				}else{
+					typeof fnFail == 'function' && fnFail(oAjax.status)
+				}
+			}
+		}
+	}
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		ajax(
+			'GET',
+			'http://127.0.0.1:3000/043-data.json',
+			'',
+			function(data){
+				var jsonToObj = JSON.parse(data)
+				var oUl = document.createElement('ul')
+				for(var i = 0;i<jsonToObj.length;i++){
+					var oLi = document.createElement('li');
+					oLi.innerHTML = " 姓名: "+ jsonToObj[i].name + " 年龄: " + jsonToObj[i].age;
+					oUl.appendChild(oLi);
+				}
+
+				document.body.appendChild(oUl)
+			},
+			function(err){
+				console.log(err)
+			}
+		);
+	}
+</script>
+</html>

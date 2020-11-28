@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>009-自定义事件.html</title>
+</head>
+<body>
+    <div id="app">
+        <button-counter @my-event="sumCount"></button-counter>
+        <button-counter @my-event="sumCount"></button-counter>
+        <button-counter @my-event="sumCount"></button-counter>
+        <p>你总共点击了{{counts}} 次</p>
+    </div>
+
+    <template id="button-counter">
+        <button v-on:click="addCount">You clicked me {{ count }} times.</button>
+    </template>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var ButtonCounter = Vue.extend({
+        data(){
+            return {
+                count:0
+            }
+        },
+        methods:{
+            addCount(){
+                this.count++;
+                this.$emit('my-event');//触发自定义事件
+            }
+        },
+        template:'#button-counter',
+    })
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            counts:0
+        },
+        methods:{
+            sumCount(){//创建事件
+                this.counts++
+            }
+        },
+        components:{
+            'button-counter':ButtonCounter
+        }
+    });
+</script>
+</html>

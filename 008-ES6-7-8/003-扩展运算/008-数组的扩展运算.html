@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-数组的扩展运算.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// let arr = [2,45,65,32,87,16];
+	/*
+	for(let i = 0;i<arr.length;i++){
+		console.log(arr[i]);
+	}
+	*/
+	// console.log(...arr);
+
+	/*
+	let arr = [45,26];
+	function total(n1,n2){
+		return n1+n2;
+	}
+	// console.log(total(1,3));
+	console.log(total(...arr));//total(45,26)
+	*/
+
+	/*
+	function result(...arr){
+		console.log(arr);
+		let total = 0;
+		for(let i = 0;i<arr.length;i++){
+			total = total + arr[i];
+		}
+		return total;
+	}
+	console.log(result(1,56,42,36));
+	*/
+
+	let arr = [24,3,56,89,47,10];
+
+	// console.log(Math.max(24,3,56,89,47,10));
+	// console.log(Math.max.apply(null,arr));
+	console.log(Math.max(...arr));
+
+</script>
+</html>

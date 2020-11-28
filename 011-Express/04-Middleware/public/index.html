@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+</head>
+<body>
+	<h1>this is static html</h1>
+	<button class="get">get请求</button>
+	<button class="post">post请求</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$('.get').on('click',function(){
+		$.ajax({
+			url:'/',
+			type:'get',
+			success:function(data){
+				console.log(data);
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})
+	})
+	$('.post').on('click',function(){
+		$.ajax({
+			url:'/',
+			type:'post',
+			success:function(data){
+				console.log(data);
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})
+	})
+</script>
+</html>

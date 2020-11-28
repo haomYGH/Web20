@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示隐藏</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		var selent = {
+			show:function($elem){
+				$elem.trigger('show');
+				$elem.show();
+				$elem.trigger('shown');
+			},
+			hide:function($elem){
+				$elem.trigger('hide');
+				$elem.hide();
+				$elem.trigger('hiden');
+			}
+		}
+		/*
+		$('div').on('hide',function(ev){
+			console.log(ev.type)
+		})
+		$('div').on('hiden',function(){
+			console.log('hiden')
+		})
+		*/
+		$('div').on('show shown hide hiden',function(ev){
+			if(ev.type == 'show'){
+				console.log('show')
+			}else if(ev.type == 'shown'){
+				console.log('shown')
+			}else if(ev.type == 'hide'){
+				console.log('hide')
+			}else if(ev.type == 'hiden'){
+				console.log('hiden')
+			}
+		})
+		$('button').eq(0).on('click',function(){
+			selent.show($('div'));
+		})
+		$('button').eq(1).on('click',function(){
+			selent.hide($('div'));
+		})
+	})
+</script>
+</html>

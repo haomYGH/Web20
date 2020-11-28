@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>求和案例</title>
+</head>
+<body>
+	<input type="text">
+	<input type="text">
+	<button>求和</button>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(function(){
+		var num1 = document.querySelectorAll('input')[0];
+		var num2 = document.querySelectorAll('input')[1];
+		var btn = document.querySelector('button');
+		$(btn).on('click',function(){
+			var numValue1 = parseFloat(num1.value);
+			console.log(typeof numValue1)
+			alert('等于'+(parseFloat(num1.value)+parseFloat(num2.value)))
+		})
+	})
+	//怎么使用jq来求和
+</script>
+</html>

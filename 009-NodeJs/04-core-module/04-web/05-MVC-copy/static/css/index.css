@@ -1,0 +1,40 @@
+/*
+* @Author: Administrator
+* @Date:   2020-07-04 17:20:36
+* @Last Modified by:   haom
+* @Last Modified time: 2020-07-06 22:28:37
+*/
+*{margin: 0;padding: 0;}
+body{
+	font-size: 30px;
+	background-color: #ccc;
+}
+li{
+	list-style: none;
+	background: #fff;	
+	border-radius: 10px;
+	border-left: 5px solid #f00;
+	margin-top: 10px;		
+}
+li:hover{
+	background-color: #9f9090;
+}
+.container{
+	width: 960px;
+	margin: 100px auto;
+	border-radius: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+h1{
+	width: 100%;
+	text-align: center;
+}
+.todo-input{
+	width: 100%;
+	margin-top: 15px;
+	height: 40px;
+	outline: none;
+	padding-left: 10px;
+	box-sizing: border-box;
+}

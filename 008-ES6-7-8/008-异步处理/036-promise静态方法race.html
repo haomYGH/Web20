@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036-promise静态方法race.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function getTimerPromise(delay){
+		return new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				resolve('get timer '+ delay + ' data ok');
+			},delay)
+		})
+	}
+	const p1 = getTimerPromise(800);
+	const p2 = getTimerPromise(600);
+	const p3 = getTimerPromise(400);
+	const p4 = new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				reject('get timer '+ 0 + ' data err');
+			},0)
+		})
+	const promise = Promise.race([p1,p2,p3,p4]);
+	// console.log(promise);
+	promise
+	.then(data=>{
+		console.log(data);
+		console.log(p3 === promise);
+	})
+	.catch(err=>{
+		console.log(err);
+	})
+</script>
+</html>

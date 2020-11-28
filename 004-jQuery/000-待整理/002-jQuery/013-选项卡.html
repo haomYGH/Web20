@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<style>
+		*{ margin: 0;padding: 0; }
+		li{ list-style-type: none; }
+		#btn{ overflow: hidden; }/*为啥要设置给ul*/
+		#btn li{
+			float: left;
+			text-decoration: none;
+			width: 50px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			margin-bottom: 10px;
+			cursor: pointer;
+		}
+		#content li{
+			display: none;
+			width: 200px;
+			height: 200px;
+			text-align: center;
+			line-height: 200px;
+			border: 1px solid #ff6700;
+		}
+		.active{
+			border-bottom: 2px solid red;
+		}
+		#content .block{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<ul id="btn">
+		<li class="active">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+	<ul id="content">
+		<li class="block">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+</body>
+<script>
+	// 构思：选择哪个li就显示他对应的块
+	// 需要给li设置事件然后操作他对应的块
+	var oBtn = document.querySelectorAll('#btn li');
+	var oContent = document.querySelectorAll('#content li');
+	for(var i=0;i<oBtn.length;i++){
+		oBtn[i].index = i;
+		oBtn[i].onmouseover = function(){
+			for(var j=0;j<oBtn.length;j++){
+				oBtn[j].className = '';
+				oContent[j].className='';
+			}
+			oBtn[this.index].className = 'active';
+			oContent[this.index].className='block';
+		}
+	}
+</script>
+</html>

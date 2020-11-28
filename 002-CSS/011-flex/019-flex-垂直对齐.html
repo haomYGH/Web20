@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019-flex-垂直对齐.html</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		.father{
+			display: flex;
+			flex-wrap: wrap;
+	
+			/*把容器分成和行数相等的份，一行占一份，在每份中垂直居中*/
+			/*以中间划一条线，前两个div在这条线的上面居中，后面一个div在这条线的下面居中*/
+			align-items: center;
+			/*把项目	*/
+			/*align-content: center;*/
+
+			margin: 50px auto;
+			width: 700px;
+			height: 500px;
+			border: 1px solid #000;
+		}
+		.father div{
+			color: #fff;
+			line-height: 50px;
+			text-align: center;
+		}
+		.son1{
+			width: 200px;
+			height: 50px;
+			background: #f00;
+		}
+		.son2{
+			width: 300px;
+			height: 50px;
+			background: #0f0;
+		}
+		.son3{
+			width: 400px;
+			height: 50px;
+			background: #00f;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">1</div>
+		<div class="son2">2</div>
+		<div class="son3">3</div>
+		<!-- <div class="son3">4</div> -->
+	</div>
+</body>
+</html>

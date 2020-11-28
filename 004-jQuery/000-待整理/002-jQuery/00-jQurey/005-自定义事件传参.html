@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义事件-传参</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var obj1 = {name:'haom'};
+		var obj2 = {name:'tom'};
+
+		//绑定自定义事件
+		$('body').on('show',function(ev,obj1,obj2){//接受参数用逗号隔开
+			console.log(obj1,obj2);
+		})
+		//触发
+		$('body').trigger('show',[obj1,obj2]);//参数以数组的形式传过去
+	})
+</script>
+</html>

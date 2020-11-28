@@ -1,0 +1,38 @@
+$img-size: 80px;
+.img-con {
+	width: $img-size;
+	height: $img-size;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	position: relative;
+	.img {
+		width: 100%;
+		height: 100%;
+	}
+	.fa-close {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		display: none;		
+		color: #fff;
+		background: rgba(0, 0, 0, .2);
+		font-size: 50px;
+		text-align: center;
+		height: $img-size;
+		line-height: $img-size;
+		cursor: pointer;
+	}
+	&:hover {
+		.fa-close {
+			display: block;
+		}
+	};
+}
+
+.file-uploader-con {
+	margin-top: 10px;
+}

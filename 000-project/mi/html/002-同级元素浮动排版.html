@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>同级元素浮动</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        /*清楚浮动*/
+        .clearfix:after{
+            display: block;
+            clear: both;
+            visibility: hidden;
+            height: 0;
+            content: '';
+        }
+        .clearfix{
+            *zoom:1;
+        }        
+        header{
+            height: 200px;
+            background-color: #f00;
+        }
+        section{
+            border: 10px solid #000;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: #00f;
+            border: 1px solid #0f0;
+            box-sizing: border-box;
+        }
+        .box1{
+            float: left;
+            line-height: 200px;
+            text-align: center;
+        }
+        .box2{
+            float: left;
+           /* float: left;*/
+        }
+        span{
+            
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <section class="clearfix">
+        <div class="box1"><span>文字</span></div>
+        <div class="box2"></div>
+    </section>
+</body>
+</html>

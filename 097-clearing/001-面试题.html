@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-面试题.html</title>
+</head>
+<body>
+	<input type="text" id="txt1">
+	<button id="btn1">被5、6整除</button>
+	<button id="btn2">1~1000、被5、6整除</button>
+	<button id="btn3">列出所有它能够整除的数字</button>
+	<hr>
+
+	<hr>
+	<br>
+<dl>
+	<dt>I</dt>
+		<dd>1.用户输入一个数字，然后判断这个数字能否被5、6整除。</dd>
+		<dd>2.找出1~1000之中，所有能被5整除，或者被6整除的数字。在控制台输出</dd>
+		<dd>3.用户输入一个数字，列出所有它能够整除的数字。比如，用户输入19，那么控制台显示1、19</dd>
+	<dt>II</dt>
+		<dd>1.列出1~60中不能被7整除的数字，或者尾数是7的数字</dd>
+</dl>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	/*
+	//I.1
+	$('#btn1').on('click',function(){
+		// console.log($('#txt1').val());
+		let val1 = $('#txt1').val();
+		if((val1 % 5 ==0) || (val1 % 6 ==0)){
+			console.log('能被5、6整除')
+		}
+	})
+	 */
+	/*
+	//I.2
+	$('#btn2').on('click',function(){
+		var val2 = 6;//5、6
+		for(let i=1;i<=1000;i++){
+			if(i % val2 ==0){
+				console.log(i);
+				continue;
+			}
+		}
+	})	
+	*/
+	/*
+	//I.3
+	$('#btn3').on('click',function(){
+		let val3 = $('#txt1').val();
+		for(let i=0;i<=val3;i++){
+			if(val3%i == 0){
+				console.log(i)
+			}
+		}
+	})	
+	*/
+	// console.log([1,2,3].length);
+	console.log(('123').length);//字符串可以判断长度
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>011-绑定属性-style</title>
+</head>
+<body>
+    <div id="app">
+        <p style="color: red;background-color: yellowgreen;font-size: 36px;">今天又是充满希望的一天！</p>
+        <p :style="styleObj">今天又是充满希望的一天！</p>
+        <p :style="[styleObj,styleObj2]">今天又是充满希望的一天！</p>
+        <p :style="styleArr">今天又是充满希望的一天！</p>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            styleObj:{
+				backgroundColor: 'yellowgreen',
+				color:'red'
+			},
+			styleObj2:{
+				fontSize:'36px'
+            },
+            styleArr:[
+				{
+					backgroundColor: 'yellowgreen',
+					color:'red'
+				},
+				{
+					fontSize:'36px'					
+				}
+			]
+        }
+    });
+    //注意：只有生成了实例并将DOM节点挂载在实例上才能在节点里使用Vue语法
+</script>
+</html>

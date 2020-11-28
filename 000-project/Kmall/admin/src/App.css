@@ -1,0 +1,16 @@
+/*
+* @Author: Chen
+* @Date:   2020-07-24 16:13:03
+* @Last Modified by:   Chen
+* @Last Modified time: 2020-08-06 17:33:00
+*/
+*{
+	margin: 0;
+	padding: 0;
+}
+.ant-table-body{
+	min-height: 400px;
+}
+.simditor-body{
+	overflow: hidden;
+}

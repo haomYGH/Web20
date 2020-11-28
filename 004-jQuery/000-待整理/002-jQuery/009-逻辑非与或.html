@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-逻辑非与或.html</title>
+</head>
+<body>
+	先搞懂意思
+	<br>
+	&& 如果第一个是不是空则继续第下一个
+	<br>
+	|| 如果第一个是真则返回
+	<br>
+	! 取反并返回的它的布尔值
+	<br>
+	再搞懂优先级!>&&>||
+
+</body>
+<script>
+	var a1 = 1&&2;//1
+	var a2 = 0&&2;//0
+	var a3 = ''&&2;//空字符串
+	var a4 = 'sss'&&2;//2
+	console.log(a4);
+	var b1 = 1|| 2;//1
+	var b2 = 0||2;//2
+	var b3 = 0||0||3;//3
+	var b4 = ''||0||3;//3
+	var b5 = 'sss'||0||3;//sss
+	console.log(b4);
+
+	var val1 =!1 && 1&&2&&(0||3)
+	console.log(val1)
+</script>
+</html>

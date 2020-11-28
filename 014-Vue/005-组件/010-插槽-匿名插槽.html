@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>010-插槽-匿名插槽.html</title>
+</head>
+<body>
+    <div id="app">
+        <layout>
+            首页焦点区域
+            首页内容区域
+        </layout>
+    </div>
+    <!-- 插槽内可以包含任何模板代码， -->
+    <!-- 打开控制台查看代码，发现被替换的部分 就 以原来的样式显示，并没有添加任何代码 -->
+
+    <template id="layout">
+        <div>
+            <div>顶部导航</div>
+            <slot>xxx焦点</slot>
+            <slot>xxx内容</slot>
+            <div>底部导航</div>
+        </div>
+    </template>    
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var Layout = Vue.extend({
+        data(){
+            return {
+                
+            }
+        },
+        template:'#layout'
+    })
+    var vm = new Vue({
+        el:'#app',
+
+        components:{
+            'layout':Layout
+        }
+    });
+</script>
+</html>

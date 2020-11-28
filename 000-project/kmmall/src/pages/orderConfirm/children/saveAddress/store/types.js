@@ -1,0 +1,1 @@
+export const SAVE_ADDRESS = 'detail@save_address'

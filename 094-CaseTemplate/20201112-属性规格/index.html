@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        li{list-style: none;}
+        .box1{position: relative;height:400px;margin-top: 20px;}
+        .small{width:400px;height:300px;position: absolute;left: 50px;}
+        .small img{width:400px;height:300px;}
+        .small span{position: absolute;background: grey; opacity: .6;left:0;top:0;display: none;}
+        .big{width:400px;height:300px;position: absolute;display: none;left: 500px;top:100px;overflow: hidden;}
+        .big img{width: 1200px;height: 900px;position: absolute;}
+        .items{position: absolute;top: 320px;left: 50px;}
+        .items a{float: left;margin-left:30px;}
+        .items a img{width: 100px;border: 1px solid black;display: block;}
+        .items input{position: absolute;background: rgba(200, 200, 200,.7 );border: none;width: 30px;height: 65px;}
+        #pre{left: 0;}
+        #next{left: 370px;}
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="small">
+            <img src="./img/2.jpg">
+            <span></span>
+        </div>
+        <div class="big">
+            <img src="./img/2.jpg" alt="">
+        </div>
+        <!-- <div class="items">
+            <a href="#"><img src="./img/2.jpg" alt=""></a>
+            <a href="#"><img src="./img/1.jpg" alt=""></a>
+            <a href="#"><img src="./img/2.jpg" alt=""></a>
+            <a href="#"><img src="./img/1.jpg" alt=""></a>
+            <a href="#"><img src="./img/2.jpg" alt=""></a>
+            <a href="#"><img src="./img/1.jpg" alt=""></a>
+            <a href="#"><img src="./img/2.jpg" alt=""></a>
+            <a href="#"><img src="./img/1.jpg" alt=""></a>
+            <input type="button" value="<<<" id="pre">
+            <input type="button" value=">>>" id="next">
+        </div> -->
+    </div>
+</body>
+<script>
+    class Big{
+        constructor(){
+            // 获取元素
+            this.small = document.querySelector(".small");
+            this.smallImg = document.querySelector(".small img");
+            this.big = document.querySelector(".big");
+            this.bigImg = document.querySelector(".big img");
+            this.span = document.querySelector("span");
+            // 绑定事件
+            this.addEvent();
+        }
+        // 绑定事件功能
+        addEvent(){
+            var that = this;
+            this.small.onmouseover = function(){//进入事件
+                that.over();
+            }
+            this.small.onmousemove = function(eve){//移动事件
+                var e = eve || window.event;
+                that.move(e);
+            }
+            this.small.onmouseout = function(){//移出事件
+                that.out();
+            }
+        }
+        //进入事件功能
+        over(){
+            this.span.style.display = "block";//显示span
+            this.big.style.display = "block";//显示右边的大框
+
+            this.bigW = this.big.offsetWidth;//大框的宽度
+            this.bigImgW = this.bigImg.offsetWidth;//大图片的宽度
+            this.smallW = this.small.offsetWidth;//小框的宽度
+
+            this.bigH = this.big.offsetHeight;//大框的高度
+            this.bigImgH = this.bigImg.offsetHeight;//大图片的高度
+            this.smallH = this.small.offsetHeight;//小框的高度
+
+            // 计算span的宽高：大框的宽度 / 大图片的宽度 * 小框的宽度
+            this.SpanW = this.bigW / this.bigImgW * this.smallW;//span的宽
+            this.SpanH = this.bigH / this.bigImgH * this.smallH;//span的高
+
+            this.span.style.width = this.SpanW + "px";//给span的宽赋值
+            this.span.style.height = this.SpanH + "px";//给span的高赋值
+
+        }
+        // 移动事件功能
+        move(e){
+            // 计算span的left,top
+            this.sSpanL = e.clientX - this.small.offsetLeft - this.span.offsetWidth/2;//可视区域的距离减去小框的left-减去span的宽的一半
+            this.sSpanT = e.clientY - this.small.offsetTop - this.span.offsetHeight/2;//可视区域的距离减去小框的top-减去span的高的一半
+
+            // 边界限定
+            if(this.sSpanL < 0) this.sSpanL = 0;
+            if(this.sSpanT < 0) this.sSpanT = 0;
+            if(this.sSpanL > this.smallW - this.SpanW) this.sSpanL = this.smallW - this.SpanW;
+            if(this.sSpanT > this.smallH - this.SpanH) this.sSpanT = this.smallH - this.SpanH;
+
+            this.span.style.left = this.sSpanL + "px";//给span的left赋值
+            this.span.style.top = this.sSpanT + "px";//给span的top赋值
+
+            // 计算大图移动的位置:span的left / (小框的宽 - span的宽) * (大框宽 - 大图的宽)
+            // 计算大图移动的位置:span的top / (小框的高 - span的高) * (大框高 - 大图的高)
+            this.bigImg.style.left = this.sSpanL / (this.smallW - this.SpanW) * (this.bigW - this.bigImgW) + "px";
+            this.bigImg.style.top = this.sSpanT / (this.smallH - this.SpanH) * (this.bigH - this.bigImgH) + "px";
+
+        }
+        //移出事件功能
+        out(){
+            this.span.style.display = "none";//隐藏span
+            this.big.style.display = "none";//隐藏右边大框
+        }
+    }
+    new Big();
+
+
+
+</script>
+</html>

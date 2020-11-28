@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义事件</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: #f00;
+		}
+	</style>
+</head>
+<body>
+	<button>触发自定义事件</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//绑定自定义事件
+		$('button').on('show hide',function(ev){
+			console.log(ev.type)
+		})
+		//触发
+		$('button').on('click',function(){
+			$('button').trigger('show');//监听到谁身上，触发时就能执行自定义事件里的fn
+		})
+//
+		$(document).on('click',function(){
+			console.log('aa')
+		})
+//
+		$(document).on('hhh hh',function(ev,arguement){
+			console.log('我会hhh');
+			console.log(arguement);
+		})
+		$(document).trigger('hhh','hh');//只能先监听后触发,无法同时触发多个事件，
+		//触发的第2个是参数
+	})
+</script>
+</html>

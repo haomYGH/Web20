@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单页布局</title>
+	<style>
+		*{margin: 0;padding: 0}
+		body{
+			flex-direction: column;
+			display: flex;
+			height: 100vh;
+		}	
+		header{
+			background-color: blue;
+		}	
+		section{
+			display: flex;
+			flex-grow: 1;
+			width: 100vw;
+			background-color: pink;
+		}	
+		nav,
+		aside{
+			width: 10vw;
+			background-color: #0f0;
+		}
+		.main{
+			flex-grow: 1;
+		}
+		footer{
+			background-color: gold;
+		}	
+		header,
+		footer{
+			height: 10vh;
+		}
+	</style>
+</head>
+<body>
+	<header>header</header>
+	<section>
+		<nav>nav</nav>
+		<div class="main">main</div>
+		<aside>aside</aside>
+	</section>
+	<footer>footer</footer>
+</body>
+</html>

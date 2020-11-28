@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>防止多次点击</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var slient = {
+			init:function($elem){
+				if($elem.is(':hidden')){
+					$elem.data('state','hidden')
+					// console.log($elem.data('state'));打印添加的属性
+				}else{
+					$elem.data('state','show')
+				}
+			},
+			show:function($elem){
+				if($elem.data('state')=='shown') return;
+				$elem.trigger('show');
+				// $elem.show(1000,function(){
+				// 	$elem.trigger('shown').data('status','shown');
+				// });
+				$elem.show();
+				$elem.trigger('shown').data('state','shown');
+			},
+			hide:function($elem){
+				if($elem.data('state')=='hidden') return;
+				$elem.trigger('hide');
+				$elem.hide();
+				$elem.trigger('hiden').data('state','hidden');
+			}
+		}
+		var $elem = $('div');
+		//监听事件
+		$elem.on('show shown hide hiden',function(ev){
+			if(ev.type == 'show'){
+				console.log('show')
+			}else if(ev.type == 'shown'){
+				console.log('shown')
+			}else if(ev.type == 'hide'){
+				console.log('hide')
+			}else if(ev.type == 'hiden'){
+				console.log('hiden')
+			}
+		})
+		slient.init($elem);
+		$('button').eq(0).on('click',function(){
+			slient.show($elem);
+		})
+		$('button').eq(1).on('click',function(){
+			slient.hide($elem);
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021-属性是在调用时决定的.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let User = {
+		count:1,
+		getCount:function(){
+			return this.count;
+		}
+	};
+	console.log(User.getCount());//1
+	var func = User.getCount;
+	console.log(func());//undefined   window上调用的,window上没有count
+</script>
+</html>

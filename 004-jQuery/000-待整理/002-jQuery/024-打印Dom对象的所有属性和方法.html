@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打印Dom对象的所有属性和方法</title>
+</head>
+<body>
+    <p onClick="func();">Menu Bar</p>
+    
+    <p name="a" style="display:none">item1</p>
+    <p name="a" style="display:none">item2</p>
+    <hr>
+</body>
+<script language="javascript">
+
+    for(myprop in document)
+        {
+          
+        
+            if (typeof(document[myprop])=="function"){
+            
+            
+            document.writeln("属性名称:"+myprop+";属性值:"+document[myprop]+"<br>");
+            document.writeln(typeof(document[myprop]));
+            }
+            
+            
+            /* document.writeln("Document的所有属性：");
+            if (typeof(document[myprop])!="function"){
+            
+            
+            document.writeln("属性名称:"+myprop+";属性值:"+document[myprop]+"<br>");
+            //document.writeln(typeof(document[myprop]));
+            } */
+        }
+    </script>
+</html>

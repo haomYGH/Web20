@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定义模板</title>
+</head>
+<body>
+    <div id="app">
+        <mb1></mb1>
+    </div>
+    <!-- 注意：模板需要定义在Vue所属的DOM元素外 -->
+    <template id="mb1">
+        <button v-on:click="count++">写法一：You clicked me {{ count }} times.</button>
+    </template>
+    
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var Mb1 = Vue.extend({
+        data(){
+            return {
+                count:0
+            }
+        },
+        template:'#mb1'
+    });
+    var vm = new Vue({
+        el:'#app',
+
+        components:{
+            'mb1':Mb1
+        }
+    });
+</script>
+</html>

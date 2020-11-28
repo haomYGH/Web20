@@ -1,0 +1,279 @@
+后台完整功能浏览网址：http://adminv2.happymmall.com/
+接口查询地址：https://gitee.com/imooccode/happymmallwiki/wikis/Home
+前台：test.happymmall.com
+
+
+0(根节点)
+	一级品类1
+		二级品类1001
+		二级品类1002
+		二级品类1003
+		二级品类1004
+	一级品类2
+		二级品类2001
+		二级品类2002
+		二级品类2003
+		二级品类2004
+
+页面一加载就去获取一级品类
+当你没有选择一级品类的时候，二级品类不可见（隐藏）
+当你选择了一级品类，就去立马获取和显示这个一级品类对应的所有二级品类
+
+当你只选择了一级品类，那么商品就挂在一级品类，选择一级品类后要清空二级品类，然后把结果暴露出去(categoryId传给父组件)
+如果你选择了二级品类，那么商品就挂在二级品类，然后把结果暴露出去(二级categoryId覆盖一级categoryId,最终只会传出一个结果)
+
+单独封装成一个组件，它最后给我们提供的就是一个分类
+
+在编辑的时候我们需要对它进行数据回填
+
+
+
+
+
+登陆页面
+	静态样式直接使用bootstrap组件
+	提交事件
+		建立工具层和服务层
+		封装通用请求api，使用promise
+		测试接口/manage/user/login.do
+	分层架构
+		把请求抽取出来，只有回调函数才是业务里面也就是提交事件里面要用的
+	表单验证
+		验证的数据是和接口有关的，所以可以放在服务层
+	提交事件成功和失败的回调函数
+		两个工具函数：获取请求参数getUrlParam，错误提示errorTips
+	细节优化
+		title
+		回车触发提交	
+
+登陆状态管理
+	登陆后显示“欢迎，xxx”，获取登陆用户信息，然后本地存储，然后显示；退出的时候清除本地存储然后跳转
+	登陆状态保持
+		通用工具：设置/获取/删除 本地存储
+	退出后状态清理
+		封装一个通用的函数，她不是工具函数，他和用户的接口相关,他也需要请求服务器的退出登陆的接口
+	登陆状态是如何保持的/用户状态的管理方式？
+		第一次请求用户登陆接口的时候，服务器会把sessionID写入cookie，表现是：请求头里面会有set-cookie字段
+		然后我们再次请求别的借口的时候就会带着这个字段过去，后端判断这个sessionID是否生效，如果他是生效状态，他就对应着我们的用户信息，然后我们就可以拿到数据
+		假如我们做了退出登陆的操作，后端会把我们的SessionID和用户信息做解绑，这样我们再请求就请求不到了
+
+首页开发
+	静态模版，修改皮肤
+	对接接口
+		新创建statistic服务层文件：用户相关的接口都放user-service里面，统计相关的都放在statistic-service里面
+
+错误页面的开发
+	如果路由匹配不到就跳转到错误页面
+		设置路由规则
+		添加错误页面
+
+用户列表
+	写静态页面，列表+分页组件，找一个分页组件
+	把分页组件封装成一个通用的组件，再封装
+	接口对接
+	错误处理：没有请求到数据/加载中
+	时间戳处理
+
+
+
+商品模块的开发：商品列表(列表，条件查询，分页，上下架)，商品详情，添加/编辑商品(表单提交，图片上传，富文本编辑)
+	{
+	1.商品列表
+		路由配置
+		根据用户列表来修改，写成静态UI
+		把表格封装成一个通用的组件
+		使用通用组件来渲染商品列表和用户列表
+		让通用表格组件支持[{}, {}]格式的表头
+		表格样式调整
+		查看和编辑的路由正确跳转
+		添加商品上下架功能
+			请求接口
+			封装一个：工具函数successTips
+			切换电脑======================================
+		条件查询单独封装成一个组件，他不是通用组件，是商品列表下的组件
+			searchType, searchKeywords
+			按回车也能触发搜索
+			它分为2个功能：切换搜索类型，输入关键字（这都是组件内部的变化，写在组件内部）
+						  点击搜索(会影响父组件，不属于组件内部，这个函数应该从父组件传给这个组件，就是子组件改变父组件的值)
+			确认父组件的onSearch能够收到子组件传过来的参数
+			然后处理列表对搜索的支持（点击搜索会影响列表的显示）
+			根据listType来判断商品列表是列表接口的数据，还是搜索接口的数据，当点击搜索的时候改变listType的值，跟据新条件加载列表
+			因为商品列表接口和搜索接口类似，就封装在一起，根据listType决定url和data
+
+	2.添加商品/编辑(区别是有无商品ID)
+		路由配置
+		静态ui
+		然后单独把品类选择框抽取出来做组件,最终这个组件要输入categoryId和parentCategoryId
+		图片上传 {
+			github上面搜索react fileupload,右侧筛选只要javascript， 选择SoAanyip/React-FileUpload,
+			单独封装成组件然后引入，正常显示,查看node_modules/react-fileupload/package.json里面,它依赖的是15.0.2，
+				我们用的是16，因为react不会向前兼容，所以自己去适配
+				找到他的源文件，FileUpload.js复制里面全部代码，自己封装成组件
+					新旧版本的区别：	
+						1.创建类: 			新版(class xxx extend React.Component{})		旧版(concst FileUpload = React.createClass({}))
+						2.propTypes: 		新版(安装第三方包，在文件最后进行数据校验)		旧版(直接作为组件对象的一个属性)
+						3.内部状态state: 	新版(this.state) 							旧版(getInitialState)
+						4.格式： 			新版(组件是类，方法之间没有逗号) 				旧版(组件是对象，属性之间要加逗号)
+						5.作用域：			新版(数据处理函数都是用箭头函数来处理this)		旧版(this本来就指向组件对象)
+							(onClick, onChange, onSubmit, 如果报错某个函数没定义,就是要改成箭头函数)
+					正常选择和上传,拿到的data有uri(后端上传用的)和url(前段显示用的)
+					成功和失败的回调(父组件传入),把data暴露出去(通过调用父组件传入的成功和失败的回调函数)
+					静态ui处理好后就要考虑state和交互方式
+					(state)新增商品字段
+						categoryId=1
+						name=三星洗衣机
+						subtitle=三星大促销
+						subImages=test.jpg,11.jpg,2.jpg,3.jpg
+						detail=detailtext
+						price=1000
+						stock=100
+						status=1
+
+						subImages=test.jpg,11.jpg,2.jpg,3.jpg它是一个字符串,为了业务方便,我们使用数组,最后转成字符串
+						调用push会返回数组长度而不是数组本身
+					把上传的图片显示出来
+					修改上传后的图片样式, 上传按钮的样式
+					删除图片功能和样式
+						覆盖写法
+							.fa-close {
+								position: absolute;
+								left: 0;
+								right: 0;
+								bottom: 0;
+								top: 0;
+								display: block;
+								background: rgba(0, 0, 0, .2);
+								color: #fff;
+								font-size: 50px;
+								text-align: center;
+								height: 80px;
+								line-height: 80px;
+								cursor: pointer;
+							}
+						删除的时候需要index,就给按钮加上index取得是map里面的index
+						点击按钮拿到index,不能通过e.terget.index来,而是e.target.getAttribute('index')来取,因为他是自定义属性
+						myArray.splice(index,1)
+						断点调试:
+							找到一个特殊语句: console.log(index)
+							控制台选择source, 搜索到这个语句, 点击前面的行号, 例如: 36256
+							执行代码,代码如果到了这个语句就会卡主
+							然后你直接去控制台打印你要的东西, 例如: e.target.value, 不需要自己在代码里console }
+
+		富文本编辑器 {
+			找一个 simditor插件, 它是基于jQuery, 
+			它有自带样式,需要从node_modules引入,import 'simditor/styles/simditor.scss';
+				富文本编辑器原理:
+					var editor = new Simditor({
+					  textarea: $('#editor')
+					  //optional options
+					});
+					它一般是先创建一个textarea,然后当这个插件初始化的时候,它把这个文本域隐藏,自己建一个文本域
+					封装成react组件,先创建文本域,然后组件初始化的时候换成它的富文本编辑器
+					把富文本的输入结果暴露给父组件
+		}
+
+		简单字段的获取
+		图片数组转成字符串
+		打印全部字段
+		提交前的状态检查, 检查通过做提交
+
+	3. 编辑商品: 复用添加商品的页面, 只需要获取商品Id, 然后把数据填进去, 数据回填通过value属性
+		路由--静态页面--state---交互逻辑
+		subImages,detail,categoryId,parentCategoryId这几个数据需要特殊处理
+		subImages: 转成数组
+		分类选择器: 在子组件内部进行数据回填,我们把数据传入子组件
+		富文本: 和分类选择器类似
+
+	4. 商品详情: 复用编辑商品页面, 没有提交按钮,没有富文本, 去掉相关的事件, 商品属性不能修改
+			特殊的2个属性: 富文本的数据回填, 分类选择器让它无法选择
+				富文本: <div dangerouslySetInnerHTML={{ __html: this.state.detail }}></div>
+				分类选择器: 传入readOnly, 子组件根据有没有传入这个属性来判断是否能选择
+
+
+	5. 总结
+		添加商品: 
+			表单的开发
+			品类选择器,二级联动
+			文件上传组价, 处理React版本兼容问题
+			富文本编辑器, 结合jQuery插件的用法
+		编辑商品
+			表单的数据回填
+			平类选择器的回填
+			富文本的数据回填
+		商品详情
+			让品类选择器支持readOnly
+			富文本字段的渲染方式
+	}
+
+品类模块的开发:
+	{
+	品类列表页面
+		品类列表
+			state: categoryList, parentCategoryId
+			根据父品类id决定显示一级品类还是二级品类
+		查看子品类:子品类路由的处理
+			只有一级品类下面才有二级品类,才有查看子品类的功能
+			点击子品类传入品类id, 页面会触发更新, componentDidMount获取这个id,重新去加载数据
+		修改品类名称
+			window.prompt()
+			请求接口,拿到数据后重新加载列表
+			一级品类和二级品类都能修改名称
+
+	添加品类页面:(用品类列表的代码然后去修改)
+		state需要parentId, categoryName, categoryList
+		渲染品类信息(渲染所有的一级品类, 默认第一项是根品类,剩下的都是一级品类)
+		添加品类
+			如果选择第一项根品类,就是要添加一级品类
+			如果选择其他项,就是添加这个一个一级品类下面的二级品类
+			添加完成后跳转到品类列表页面
+	}
+
+订单模块开发: 2个页面, 订单列表和订单详情
+	1.订单列表页面:
+		列表
+		按订单号搜索
+
+	2.详情页
+		详情
+		发货
+
+
+项目上线(发布到生产环境, 让它可以在外网访问)
+	准备
+		增加上线需要的适配代码
+			静态资源需要单独的静态域名, 例如: s.xxx.com, 所以需要在代码里增加对环境的判断
+			开发人员提交pull request请求, 管理员审核,通过后合并到master分支上
+
+		生产环境配置
+			安装NodeJs: 作为一些工具的依赖环境
+			安装Yarn	: 用来在线上安装依赖包
+			安装Git: 安装后配置权限 把我们的代码从远程仓库拉下来
+			安装Nginx: 作为请求的反向代理, 有了它可以让几种类型的文件和服务共用一个80端口
+
+		代码发布
+			拉取最新的master分支上的代码
+			通过yarn做初始化
+			执行线上环境的打包编译, dist目录下就是打包后的项目
+			复制dist目录到目标目录
+
+		Nginx和域名配置: 通过Nginx把静态文件和数据接口分布到不同的位置
+			Nginx中vHost的配置: Nginx对域名的处理方式, 配置完后服务器就能处理发过来的请求了
+			通过指定hosts的方式做线上回归测试(本地配置host)
+			更改域名解析: 外网通过域名访问, 不用指定host了
+
+
+
+	适配:
+		let WEBPACK_ENV= process.env.WEBPACK_ENV || 'dev';
+		publicPath: WEBPACK_ENV === 'dev' ? '/dist/' : '//s.jianliwu.com/admin-v2-fe/dist/' ,
+
+		"scripts": {
+		    "dev": "node_modules/.bin/webpack-dev-server",
+		    "dist": "WEBPACK_ENV=online node_modules/.bin/webpack -p", // mac或者Linux
+		    "dist_win": "set WEBPACK_ENV=online&& node_modules/.bin/webpack -p" // win
+		  },
+
+
+
+
+

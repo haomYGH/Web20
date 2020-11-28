@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-Promis基本使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//1.Promise构造函数必须接受一个回调函数作为参数,
+	//该函数的两个参数分别是resolve和reject:
+	//resolve和reject都是函数:resolve代表成功情况下执行的函数,reject代表失败情况下执行的函数
+	//2.Promise接受的构造函数会立马执行
+	const promise = new Promise((resolve,reject)=>{
+		//promise的状态只用两种结果
+		//1.成功:pending => fulfilled
+		//2.失败:pending => rejected
+		// console.log('promise ok');
+		setTimeout(function(){
+			// console.log('get timer')
+			// resolve('get data ok');
+			reject('get data err');
+		},200)
+	});
+	// console.log('get promise');
+	// console.log(promise);
+	promise
+	.then((data)=>{
+		console.log(data);
+		console.log(promise);
+	},(err)=>{
+		console.log(err);
+	})
+	//promies接受两个回调函数:第一个是成功回调第二个是失败回调
+</script>
+</html>

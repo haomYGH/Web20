@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插件masonry</title>
+    <style>
+        *{margin: 0;
+        padding: 0;}
+        .grid {
+            margin: 0 auto;
+        }
+        div[class^='grid-item']{/* div类名以 grid-item 开头。 */
+            width: 150px;
+            border: 1px solid #000;
+        }
+        .grid-item-1{
+            height: 200px;
+            background-color: hotpink;
+        }
+        .grid-item-2{
+            height: 300px;
+            background-color: greenyellow;
+        }
+        .grid-item-3{
+            height: 400px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+
+        <div><div class="grid-item grid-item-1">...</div></div>
+        <div><div class="grid-item grid-item-2">...</div></div>
+        <div><div class="grid-item grid-item-3">...</div></div>
+    </div>
+
+    <script src="./js/jquery-1.12.4.js"></script>
+    <script src="./js/masonry.pkgd.min.js"></script>
+    <script>
+        $('.grid').masonry({
+            // options
+            itemSelector: '.grid-item',
+            fitWidth: true,//自适应浏览器宽度
+            gutter: 10//盒子间距
+        });
+    </script>
+</body>
+</html>

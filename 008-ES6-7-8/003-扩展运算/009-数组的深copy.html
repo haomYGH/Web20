@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-数组的深copy.html</title>
+</head>
+<body>
+	<ul>
+		<li>01</li>
+		<li>02</li>
+		<li>03</li>
+		<li>04</li>
+		<li>05</li>
+		<li>06</li>
+		<li>07</li>
+		<li>08</li>
+		<li>09</li>
+		<li>10</li>
+	</ul>
+</body>
+<script>
+	//数组浅copy
+	/*
+	let arr1 = [24,3,56,89,47,10];
+	let arr2 = arr1;
+	arr1.push(999);
+	console.log('arr1::',arr1);
+	console.log('arr2::',arr2);
+	console.log(arr1 === arr2);
+	*/
+
+	/*
+	let arr1 = [24,3,56,89,47,10];
+	let arr2 = [];
+	for(let i = 0;i<arr1.length;i++){
+		arr2.push(arr1[i])
+	}
+	arr1.push(999);
+	console.log('arr1::',arr1);
+	console.log('arr2::',arr2);
+	console.log(arr1 === arr2);
+	*/
+
+	/*
+	let arr1 = [24,3,56,89,47,10];
+	let arr2 = arr1.concat();
+	arr1.push(999);
+	console.log('arr1::',arr1);
+	console.log('arr2::',arr2);
+	console.log(arr1 === arr2);
+	*/
+
+	/*
+	let arr1 = [24,3,56,89,47,10];
+	let arr2 = arr1.splice(0);
+	arr2.push(999);
+	console.log('arr1::',arr1);
+	console.log('arr2::',arr2);
+	console.log(arr1 === arr2);
+	*/
+
+	/*
+	let arr1 = [24,3,56,89,47,10];
+	let arr2 = [...arr1];
+	arr2.push(999);
+	console.log('arr1::',arr1);
+	console.log('arr2::',arr2);
+	console.log(arr1 === arr2);
+	*/
+
+	let aList = document.getElementsByTagName('li');
+	console.log(aList);
+	// console.log(aList.concat());
+	console.log([...aList]);
+
+	
+
+</script>
+</html>

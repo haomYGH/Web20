@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-原型-概念.html</title>
+</head>
+<body>
+	<dl>
+		<dt>原型</dt>
+		<dd>在JavaScript中，每个函数都有一个prototype属性，这个属性指向函数的原型对象。</dd>
+	</dl>
+	<hr>
+	<h3>prototype属性指向原型</h3>
+	<hr>
+	原型上面有2个方法：
+	<br>
+		constructor
+	<br>
+		__proto__
+</body>
+<script>
+	function fn(name){
+		this.name = name;
+	}
+	fn.prototype.sayName=function(){
+		console.log('I am '+this.name)
+	}
+
+	console.log(fn.prototype);//{constructor: ƒ}
+	//原型方法只能由实例对象调用
+	fn.prototype.sayName();//这里仅仅是执行，不能说是调用。因为不能传参
+	const fn1 = new fn('haom');
+	fn1.sayName();
+</script>
+</html>

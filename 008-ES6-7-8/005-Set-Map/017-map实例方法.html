@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-map实例方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let obj1 = {id:'xf001'};
+	let obj2 = {id:'xf002'};
+	let m = new Map();
+	/*
+	m.name = 'Tom';
+	m[obj1] = 'hello';
+	m[obj2] = '你好';
+	*/
+	m.set('name','Tom');
+	m.set(obj1,'hello');
+	m.set(obj2,'你好');
+
+	console.log(m.get('name'));
+	console.log(m.get(obj1));
+	console.log(m.get('age'));
+	// console.log(m.delete('name'));
+	// console.log(m.delete(obj1));
+	// console.log(m.delete(obj2));
+	// console.log(m.delete('age'));
+
+	// console.log(m.has(obj2));
+	console.log(m.clear());
+
+	console.log(m);
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承</title>
+</head>
+<body>
+	为了拥有构造函数上的属性和方法。
+	<br>
+	因为构造函数属于对象，对象存在于堆内存中。需要深copy
+</body>
+<script>
+	function Father(name){
+		this.name=name;
+		console.log(this);
+	}
+	Father.prototype={
+		constructor:Father,
+		method:function(){
+			console.log('我是独一无二的！',name)
+		}
+	}
+	//继承Father
+	function Son(name){
+		Father.call(this,name);
+		this.age=18;
+		console.log(this);
+	}
+	Son.prototype=Object.create(Father.prototype);
+	Son.prototype.constructor=Son;
+	Son.prototype.methodSon=function(){
+		console.log('我是继承！')
+	}
+	/*
+	Son.prototype={
+		constructor:Son,
+		methodSon:function(){
+			console.log('我是继承的！！')
+		}
+	}
+	*/
+	//实例化
+	var f=new Father('tom');
+	var s=new Son('haom');
+	f.method();
+	s.method();
+	s.methodSon();
+	console.log(s.constructor);
+</script>
+</html>

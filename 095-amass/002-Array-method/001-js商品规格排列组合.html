@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>001-js商品规格排列组合.html</title>
+</head>
+<body>
+    
+</body>
+<script>
+    arr = [
+        ['a1', 'a2','a3'],
+        ['b1', 'b2', 'b3'],
+        ['c1', 'c2','c3'],
+    ];
+    console.log(arr);
+    results = [];
+    result = [];
+    doExchange(arr, 0);
+    function doExchange(arr, index){
+        for (var i = 0; i<arr[index].length; i++) {
+            result[index] = arr[index][i];
+            if (index != arr.length - 1) {
+                doExchange(arr, index + 1)
+            } else {
+                results.push(result.join(','))
+            }
+        }
+    }
+
+    console.log( results);//
+</script>
+</html>

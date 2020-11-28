@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-set遍历方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let arr = [1,5,9];
+	let s = new Set(arr);
+
+	s.add(99);
+	console.log(s);
+	/*
+	for(let key in s){
+		console.log('key::',key);
+	}
+	*/
+
+	/*
+	for(let key of s.keys()){
+		console.log('key::',key);
+	}
+	*/
+	/*
+	for(let value of s.values()){
+		console.log('value::',value);
+	}
+	*/
+	/*
+	for(let entry of s.entries()){
+		console.log('entry::',entry);
+	}
+	*/
+	s.forEach(function(value,key){
+		console.log('value=',value,' key=',key)
+	})
+	// console.log(s)
+
+	/*
+	let arr2 = [1,45,62,3,1,45,98];
+	let s2 = new Set(arr2);
+	console.log(arr2);
+	console.log(s2);
+	*/
+	
+</script>
+</html>

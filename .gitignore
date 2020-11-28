@@ -1,0 +1,21 @@
+.DS_Store
+# *.mp3
+# *.ogg
+# *.wav
+# *.mp4
+# *.webm
+**/node_modules
+**/unpackage
+**/dist
+**/db
+# *.jpg
+# *.png
+# *.jpeg
+
+*.log
+
+**uploads
+**/public/ad-images
+**/public/product-images
+
+#这 只能控制文件add 到暂存区，如果想add到暂存区可以精确add，这样就能避免add . 所有

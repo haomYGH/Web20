@@ -1,0 +1,11 @@
+#btn-admin{
+	float: right;
+	margin-top: 10px;
+	margin-right: 150px;
+}
+.content{
+	min-height: 300px;
+}
+.ck-editor__editable{
+	height: 200px;
+}

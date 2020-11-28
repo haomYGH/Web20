@@ -1,0 +1,18 @@
+/*
+* @Author: Chen
+* @Date:   2020-07-30 10:24:08
+* @Last Modified by:   Chen
+* @Last Modified time: 2020-07-31 17:48:54
+*/
+.Login{
+	width: 300px;
+	margin: 50px auto;
+	padding: 20px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	box-shadow: 0 5px 5px rgba(0,0,0,0.4);
+	background-color: rgba(0,0,0,0.6);
+}
+.Login .btn-sub-login{
+	width: 100%;
+}

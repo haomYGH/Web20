@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-async函数基本使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	async function fn(){
+		console.log('this is async function ');
+		return 'get data ok';
+	}
+	*/
+	// console.log(fn);
+	// console.log(fn());
+	// const promise = fn();
+	// console.log(promise);
+	/*
+	promise
+	.then(data=>{
+		console.log(data);
+	})
+	*/
+	let p1;
+	async function fn(){
+		p1 = new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				resolve('ok')
+			},200)
+		})
+		return p1;
+	}
+	const promise = fn();
+	console.log('promise::',promise);
+	console.log('p1::',p1);
+	console.log(p1 === promise);
+	
+</script>
+</html>

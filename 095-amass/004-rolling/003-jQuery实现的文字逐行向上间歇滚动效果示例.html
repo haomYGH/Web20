@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>www.jb51.net jQuery文字逐行向上滚动代码</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: '微软雅黑';
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        li {
+            list-style: none
+        }
+
+        img {
+            border: none
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* -------------------------摇奖排行榜----------------------------------- */
+        /* .Top_Record {} */
+
+        .record_Top {
+            width: 90%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin: 30px auto 0px;
+            color: #000;
+        }
+
+        .topRec_List dl,
+        .maquee {
+            width: 90%;
+            overflow: hidden;
+            margin: 0 auto;
+            color: #7C7C7C
+        }
+
+        .topRec_List dd {
+            float: left;
+            text-align: center;
+            border-bottom: 1px solid #1B96EE;
+            color: #1B96EE;
+        }
+
+        .topRec_List dl dd:nth-child(1) {
+            width: 17%;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .topRec_List dl dd:nth-child(2) {
+            width: 18%;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .topRec_List dl dd:nth-child(3) {
+            width: 25%;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .topRec_List dl dd:nth-child(4) {
+            width: 40%;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .maquee {
+            height: 195px;
+        }
+
+        .topRec_List ul {
+            width: 100%;
+            height: 195px;
+        }
+
+        .topRec_List li {
+            width: 100%;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            font-size: 12px;
+            border-bottom: 1px dashed #aaa;
+        }
+
+        /*.topRec_List li:nth-child(2n){ background:#077cd0}*/
+        .topRec_List li div {
+            float: left;
+        }
+
+        .topRec_List li div:nth-child(1) {
+            width: 17%;
+        }
+
+        .topRec_List li div:nth-child(2) {
+            width: 18%;
+        }
+
+        .topRec_List li div:nth-child(3) {
+            width: 25%;
+        }
+
+        .topRec_List li div:nth-child(4) {
+            width: 40%;
+        }
+
+        .apple a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .apple,
+        .aa {
+            width: 90%;
+            height: 50px;
+            overflow: hidden;
+            margin: 30px auto;
+            border: 1px solid #1B96EE;
+        }
+
+        .apple a,
+        .aa a {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-indent: 20px;
+            color: #1B96EE;
+        }
+
+        .aa {
+            word-wrap: break-word;
+            line-height: 50px;
+            color: #1B96EE;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Top_Record">
+        <div class="record_Top">摇奖排行榜</div>
+        <div class="topRec_List">
+            <dl>
+                <dd>编号</dd>
+                <dd>姓名</dd>
+                <dd>奖项</dd>
+                <dd>时间</dd>
+            </dl>
+            <div class="maquee">
+                <ul>
+                    <li>
+                        <div>1</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>2</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>3</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>4</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>5</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>6</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>7</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                    <li>
+                        <div>8</div>
+                        <div>王**</div>
+                        <div>中了30元</div>
+                        <div>2014/12/30 14:20</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function autoScroll(obj) {
+            $(obj).find("ul").animate({
+                marginTop: "-39px"
+            }, 1000, function () {
+                $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
+            })
+        }
+        $(function () {
+            var scroll = setInterval('autoScroll(".maquee")', 1500);
+            $(".maquee").hover(function () {
+                clearInterval(scroll);
+            }, function () {
+                scroll = setInterval('autoScroll(".maquee")', 1500);
+            });
+        });
+    </script>
+</body>
+
+</html>

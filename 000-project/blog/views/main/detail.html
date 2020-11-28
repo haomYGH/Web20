@@ -1,0 +1,33 @@
+{% extends './layout.html' %}
+{% block title %}
+	详情页
+{% endblock %}
+{% block head %}
+  <link rel="stylesheet" href="/css/detail.css">
+{% endblock %}
+{% block content %}
+    <div class="panel panel-default custom-panel detail-panel">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{ articleData.title }}</h3>
+        <p class="sub-title">
+            <span class="text-muted">{{ articleData.category.name }}</span>
+            <span class="text-muted">{{ articleData.createdTime }}</span>
+            <span class="text-muted"><em>{{ articleData.click }}</em>人已阅读</span>
+        </p>
+    </div>
+    <div class="panel-body">
+        <div class="well">
+            <strong>简介:</strong>
+            {{ articleData.intro }}
+        </div>
+        <div>
+            {{ articleData.content | safe }}
+        </div>
+    </div>
+    </div>
+    <!-- 评论分页 -->
+    {% include './comment.html' %}
+{% endblock %}
+{% block footer %}
+<script src="/js/detail.js"></script>
+{% endblock %}

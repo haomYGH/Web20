@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class绑定</title>
+    <style>
+        .active{
+			background-color: yellowgreen;
+		}
+		.error{
+            color: red;
+		}
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <p class="active error">class="active error"</p>
+        <p :class="{active:isActive}">:class="{active:isActive}"</p>
+        <p :class="classObj">:class="classObj"</p>
+        <p :class="['active','error']">:class="['active','error']"</p>
+        <p :class="classArr">:class="classArr"</p>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#demo',
+        data:{
+            isActive:true,
+            isError:false,
+            classObj:{
+                active:true,error:true
+            },
+            classArr:[
+                'active','error'
+            ]
+        }
+    });
+</script>
+</html>

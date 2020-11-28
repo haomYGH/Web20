@@ -1,0 +1,36 @@
+<import src="./article-item/article-item.wxml"/>
+<!--pages/article/article.wxml-->
+<view>
+  <swiper indicator-dots="true"
+    autoplay="true" interval="3000" duration="500">
+    <swiper-item>
+      <image src="/images/swiper/s1.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/swiper/s2.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/swiper/s3.jpg"></image>
+    </swiper-item>
+  </swiper>
+  <view>
+    <block wx:for='{{articles}}' wx:key="index">
+      <!-- <view class='article-item'>
+        <view class='article-head'>
+          <image class='article-head-avatar' src='{{item.avatar}}'></image>
+          <text class='article-head-date'>{{item.date}}</text>
+        </view>
+        <text class='article-title'>{{item.title}}</text>
+        <image class='article-img' src='{{item.img}}'></image>
+        <text class='article-desc'>{{item.desc}}</text>
+        <view class='article-footer'>
+          <image class='article-footer-icon' src='../../images/icon/star.png'></image>
+          <text class='article-footer-text'>{{item.star}}</text>
+          <image class='article-footer-icon' src='../../images/icon/view.png'></image>
+          <text class='article-footer-text'>{{item.view}}</text>        
+        </view>
+      </view> -->
+      <template is="articleItem" data="{{...item}}"/>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定义一个不可枚举对象</title>
+</head>
+<body>
+	简单来说：不可枚举就是for in  循环遍历不到的
+</body>
+<script>
+	var obj = Object.creat(null);
+	var descriptor = {
+		value:'hello world',
+		enmuerable:false//不可枚举
+	}
+</script>
+</html>

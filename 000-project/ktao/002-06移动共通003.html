@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-06移动共通-04+05.html</title>
+	<style>
+		div{
+			position: relative;
+			left:0;
+			top:50px;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<button>Js移动x</button>
+	<button>Js移动y</button>
+	<button>Js复原</button>
+	<div class="transition"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	/*
+	function init($elem){
+		this.$elem = $elem;
+		this.$elem.removeClass('transition');
+		this.currentX = parseFloat(this.$elem.css('left'));
+		this.currentY = parseFloat(this.$elem.css('top'));
+	}
+	function to(x,y,callback){
+			x = (typeof x == 'number') ? x : this.currentX;//number为小写
+			y = (typeof y == 'number') ? y : this.currentY;
+			if(this.currentX == x && this.currentY == y) return;
+			this.$elem.trigger('move');
+			console.log('1::',x,y)
+			typeof callback == 'function' && callback();
+			// this.$elem.trigger('moved');
+			this.currentX = x;
+			this.currentY = y;	
+	}	
+	function Js($elem){
+		init.call(this,$elem);
+	}
+	Js.prototype = {
+		constructor:Js,
+		to:function(x,y){
+			to.call(this,x,y,function(){
+				console.log('2:::',x,y);
+				this.$elem
+				.stop()
+				.animate({
+					left:x,
+					top:y				
+				},function(){
+					this.$elem.trigger('moved');
+				}.bind(this));
+			}.bind(this));			
+		},
+		x:function(x){
+			// if(this.currentX == x) return;
+			this.to(x)
+		},
+		y:function(y){
+			// if(this.currentY == y) return;
+			this.to(null,y)
+		}
+	}
+	*/
+	function init($elem){
+		this.$elem = $elem;
+		this.$elem.removeClass('transition');
+		this.currentX = parseFloat(this.$elem.css('left'));
+		this.currentY = parseFloat(this.$elem.css('top'));
+	}
+	function to(x,y,callback){
+		//处理x和y方法参数问题
+		x = (typeof x == 'number') ? x : this.currentX;
+		y = (typeof y == 'number') ? y : this.currentY;
+		//每次移动前判断是是否到达目标值
+		if(this.currentX == x && this.currentY == y) return ;
+		//移动前执行事件
+		this.$elem.trigger('move');
+		typeof callback == 'function' && callback(x,y);
+
+		//更新坐标值
+		this.currentX = x;
+		this.currentY = y;
+	}
+
+
+	function Slient($elem){
+		init.call(this,$elem);
+	}
+	Slient.prototype = {
+		constructor:Slient,
+		to:function(x,y){
+			to.call(this,x,y,function(){
+				this.$elem.css({
+					left:x,
+					top:y
+				});
+				//移动后执行事件
+				this.$elem.trigger('moved');
+			}.bind(this))
+		},
+		x:function(x){
+			this.to(x)
+		},
+		y:function(y){
+			this.to(null,y)
+		}
+	}
+
+	function Js($elem){
+		init.call(this,$elem);
+	}
+	Js.prototype = {
+		constructor:Js,
+		to:function(x,y){
+			to.call(this,x,y,function(x,y){
+				console.log('1::',x,y)
+				this.$elem
+				.stop()
+				.animate({
+					left:x,
+					top:y
+				},function(){
+					//移动后执行事件
+					this.$elem.trigger('moved');
+				}.bind(this))
+			}.bind(this))
+		},
+		x:function(x){
+			this.to(x)
+		},
+		y:function(y){
+			this.to(null,y)
+		}
+	}
+
+
+
+	var jsMove = new Js($('div'));
+
+	$('div').on('move moved',function(ev){
+		console.log(ev.type)
+	});
+	$('button').eq(0).on('click',function(){
+		jsMove.x(200)
+	});	
+	$('button').eq(1).on('click',function(){
+		jsMove.y(200)
+	});	
+	$('button').eq(2).on('click',function(){
+		jsMove.to(0,50)
+	});	
+</script>
+</html>

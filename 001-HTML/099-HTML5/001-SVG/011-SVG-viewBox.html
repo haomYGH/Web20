@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-SVG-viewBox.html</title>
+	<style>
+		*{margin: 0;padding: 0}
+		svg{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<!-- 注：viewBox的宽高是按照适口viewport的宽高比例来设置的 -->
+	<svg width=300 height=150 viewBox="0 0 100 50" >
+		<rect x1=0 y1=0 width=100 height=150 fill="black" />
+	</svg>
+	<br>
+	<svg width=300 height=300 viewBox="0 0 50 50">
+		<rect x1=0 y1=0 width=150 height=150 fill="black" />
+	</svg>	
+</body>
+</html>

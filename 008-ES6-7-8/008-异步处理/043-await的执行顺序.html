@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-await的执行顺序.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.min.js"></script>
+<script>
+	function getDataPromise(url){
+		return new Promise((resolve,reject)=>{
+			$.ajax({
+				url:url,
+				success:(data)=>{
+					resolve(data)
+				},
+				error:(jqXHR,statusMsg)=>{
+					reject(statusMsg)
+				}
+			})
+		})
+	}
+	//1.指定用户=>2.根据指定用户获取对应订单号=>3.根据订单号获取商品价格
+	//继发关系
+	async function fn(user){
+		const userNo = await getDataPromise('./data/'+user+'.json');
+		// console.log(userNo)
+		const userData = await getDataPromise('./data/'+userNo.orderNo+'.json');
+		// console.log(user);
+		return userData;
+	}
+	//没有继发关系
+	async function getUsers(){
+		/*
+		const userA = await getDataPromise('./data/a.json');
+		const userB = await getDataPromise('./data/b.json');
+
+		console.log(userA);
+		console.log(userB);
+		*/
+		const promiseA = getDataPromise('./data/a.json');
+		const promiseB = getDataPromise('./data/b.json');
+		const userA = await promiseA;
+		const userB = await promiseB;
+
+		return [userA,userB];
+	}
+	/*
+	const p = fn('a');
+	p
+	.then(data=>{
+		console.log(data)
+	})
+	*/
+
+	getUsers()
+	.then(data=>{
+		console.log(data)
+	})
+</script>
+</html>

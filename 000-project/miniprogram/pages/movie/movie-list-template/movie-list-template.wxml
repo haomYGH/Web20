@@ -1,0 +1,14 @@
+<import src="../movie-item-template/movie-item-template.wxml" />
+<template name="movieListTemplate">
+  <view class='movie-list-wrap'>
+    <view class='head'>
+      <text class='tag'>{{tag}}</text>
+      <text bindtap='tapMore' class='more' data-type="{{type}}">更多></text>
+    </view>
+    <view class='list'>
+      <block wx:for="{{movies}}" wx:for-item="movie" wx:key="index">
+      <template is="movieItemTemplate" data="{{...movie}}" />
+      </block>
+    </view>
+  </view>
+</template>

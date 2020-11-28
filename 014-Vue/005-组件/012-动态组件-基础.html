@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态组件-基础</title>
+</head>
+<body>
+    <div id="demo">
+        <button @click="currentTab='tab-a'">A组件</button>
+        <button @click="currentTab='tab-b'">B组件</button>
+        <component :is="currentTab"></component>
+        <!-- component -->
+    </div>
+    <template id="a">
+        <p>我是A组件的内容</p>
+    </template>
+    <template id="b">
+        <p>我是B组件的内容</p>
+    </template>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    //定义构造器
+    let A = Vue.extend({
+        template:"#a",//通过id与模板联系
+    });
+    let B = Vue.extend({
+        template:"#b"
+    });
+    //组件注册
+    Vue.component('tab-a',A);//第一个参数是自定义组件标签名<tab-a></tab-a>
+    Vue.component('tab-b',B);
+    //Vue实例
+    new Vue({
+        el:'#demo',
+        data:{
+			// currentTab:String,
+			currentTab:'tab-a',//使默认显示A组件
+		}
+    });
+</script>
+</html>

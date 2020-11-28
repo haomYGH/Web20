@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>construct</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// ;()();
+	;(function(w){
+		function Person(){
+			this.name = 'tom';
+		}
+		Person.prototype.p1 = function(){
+
+		}
+		w.Person = Person;
+	})(window);
+	console.log(Person.prototype);//有constructor和__proto__
+	//如果将prototype的方法写到对象｛｝里
+	;(function(w){
+		function Student(){
+			this.name = 'haom';
+		}
+		Student.prototype = {
+			s1:function(){
+
+			}
+		}
+		w.Student = Student;
+	})(window);
+	console.log(Student.prototype);//没有constructor
+
+	//所以：construct:对象本身， 
+</script>
+</html>

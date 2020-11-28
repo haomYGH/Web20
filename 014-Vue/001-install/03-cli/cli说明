@@ -1,0 +1,6 @@
+命令行工具：只有安装了这个，才能在终端命令启动项目。所以其他两个使用方法都是直接在本地启动的
+安装
+npm install -g @vue/cli
+vue --version
+启动
+npm run serve

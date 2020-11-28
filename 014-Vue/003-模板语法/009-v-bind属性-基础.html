@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态绑定属性</title>
+</head>
+<body>
+    <div id="demo">
+        <a v-bind:href="baidu">百度</a>
+        <a :href="kuazhu">跨猪</a>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#demo',
+        data:{
+            baidu:'https://www.baidu.com/',
+            kuazhu:'https://www.kuazhu.com/'
+        }
+    });
+</script>
+</html>

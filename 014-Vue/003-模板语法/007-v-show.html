@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show了解就行</title>
+</head>
+<body>
+    <div id="app1">
+        <p>
+            {{num}}
+            <span v-if="num<60">不及格</span>
+            <span v-else>及格</span>
+        </p>
+    </div>
+    <div id="app2">
+        <p>
+            {{num}}
+            <span v-show="num<60">不及格</span>
+            <!-- 其中v-show使用dispaly来控制显示隐藏,不推荐<span style="display: none;">不及格</span> -->
+            <span v-show="num>=60">及格</span>
+        </p>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var num = 60;
+    var vm1 = new Vue({
+        el:'#app1',
+        data:{
+            num:num
+        }
+    })
+    var vm2 = new Vue({
+        el:'#app2',
+        data:{
+            num:num
+        }
+    })
+</script>
+</html>

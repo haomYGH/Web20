@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定事件监听器v-on:click</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="count++">你点击了我{{count}}次</button>
+        <!-- v-on:缩写为@ -->
+        <button @click="count++">你点击了我{{count}}次</button>
+        <br/><br/>
+        <!-- 注意：这里 函数名() 并没有直接调用 -->
+        <button @click="addCount">你点击了我{{count}}次</button>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            count:0
+        },
+        methods:{
+            addCount(){
+                // count++;//？答：我们要拿到实例data里面的count，怎么拿？
+                // console.log(this);//this上面就有我们添加的count
+                this.count++
+            }
+        }
+    });
+</script>
+</html>

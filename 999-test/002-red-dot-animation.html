@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>002-red-dot-animation.html</title>
+    
+<style>
+    body{
+        background-color: black;
+    }
+  /* 设置动画前颜色 */
+  .point-flicker:after {
+    background-color: #fff;
+  }
+ 
+  /* 设置动画后颜色 */
+  .point-flicker:before {
+    background-color: rgba(250, 250, 250, 0.2);
+  }
+ 
+  /* 设置动画 */
+  .point-flicker:before,
+  .point-flicker:after {
+    content: '';
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+    border-radius: 50%;
+    /* CSS3 animation 属性 网址 */
+    /* https://www.w3school.com.cn/cssref/pr_animation.asp */
+    animation: warn 1.5s ease-out 0s infinite;
+  }
+ 
+  /* @keyframes 规则用于创建动画。在 @keyframes 中规定某项 CSS 样式，就能创建由当前样式逐渐改为新样式的动画效果。 */
+  @keyframes warn {
+    0% {
+      transform: scale(0.5);
+      opacity: 0.3;
+    }
+ 
+    30% {
+      opacity: 0.5;
+    }
+ 
+    100% {
+      transform: scale(1.4);
+      opacity: 0.9;
+    }
+  }
+</style>
+</head>
+<body>
+    <div class="point point-flicker">
+ 
+    </div>
+</body>
+<script>
+
+</script>
+</html>

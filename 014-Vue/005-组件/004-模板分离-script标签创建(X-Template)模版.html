@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>003-模板分离.html</title>
+</head>
+<body>
+    <div id="app">
+        <pre>
+            <mb1></mb1>
+
+            <mb2></mb2>
+        </pre>
+    </div>
+    <!-- 注意：模板需要定义在Vue所属的DOM元素外 -->
+    <template id="mb1">
+        <button v-on:click="count++">写法一：You clicked me {{ count }} times.</button>
+    </template>
+    <script type="text/x-template" id="mb2">
+        <button v-on:click="count++">写法二：You clicked me {{ count }} times.</button>
+    </script>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+
+        components:{
+            'mb1':{
+                data(){
+                    return {
+                        count:0
+                    }
+                },
+                template:'#mb1'
+            },
+            'mb2':{
+                data(){
+                    return {
+                        count:0
+                    }
+                },
+                template:'#mb2'
+            }
+        }
+    });
+</script>
+</html>

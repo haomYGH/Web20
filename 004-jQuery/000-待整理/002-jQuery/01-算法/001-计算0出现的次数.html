@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0-1000中0出现的次数</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //列出含有0的值
+    //0 10 20 101 102 ... 
+    //思路：循环遍历0-1000，正则比较这1000个数字，包含0，共1001个
+    var num = 0;
+    var reg = new RegExp('0','g');//匹配0，全局匹配
+    // console.log(reg.test(101))//有0则返回true
+    for(var i=0;i<=1000;i++){
+        if(reg.test(i)){
+            num++;
+        }
+    }
+    console.log(num)
+</script>
+</html>

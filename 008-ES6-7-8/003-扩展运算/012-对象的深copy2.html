@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-对象的深copy2.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.min.js"></script>
+<script>
+	let obj1 = {
+		name:'Tom',
+		age:18,
+		friends:{name:'Leo',age:20},
+		pets:['cat','tigger']
+	}
+	/*
+	let obj2 = JSON.parse(JSON.stringify(obj1));
+	obj1.name = 'Petter';
+	obj1.friends.age = 99;
+	obj1.pets.push('dog');
+	console.log('obj1::',obj1);
+	console.log('obj2:::',obj2);
+
+	console.log(obj1 === obj2);
+	*/
+
+	let obj2 = $.extend(true,{},obj1);
+	obj1.name = 'Petter';
+	obj1.friends.age = 99;
+	obj1.pets.push('dog');
+	console.log('obj1::',obj1);
+	console.log('obj2:::',obj2);
+
+	console.log(obj1 === obj2);
+
+
+</script>
+</html>

@@ -1,0 +1,11 @@
+.header .logo{
+	color: #1DA57A;
+    float: left;
+    font-size: 28px;
+    font-weight: 600;
+    width: 200px;
+}
+.header .ant-dropdown-link{
+	float: right;
+	color: #1DA57A;
+}

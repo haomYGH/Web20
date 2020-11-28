@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model双向绑定</title>
+</head>
+<body>
+    <pre>
+        .lazy - 取代 input 监听 change 事件
+        .number - 输入字符串转为有效的数字
+        .trim - 输入首尾空格过滤
+    </pre>
+    <div id="app">
+        <p>{{message}}</p>
+        .lazy<input v-model.lazy="message" type="text">
+        <br/><br/>
+        .number<input v-model.number="message" type="text">
+        .number字符串开头<input v-model.number="str" type="text">
+    </div>
+    <!-- .lazy输入过程不会触发改变message，脱离输入焦点后改变message -->
+    <!-- .number请输入数字，以数字开头时：非数字类型会弱转化成数字,转化不了的直接清空。以字符串开头时,不会清除非数字类型值 -->
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message:'',
+            str:'hello'
+        }
+    });
+</script>
+</html>

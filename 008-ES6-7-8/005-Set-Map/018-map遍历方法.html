@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-map遍历方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let obj1 = {id:'xf001'};
+	let obj2 = {id:'xf002'};
+	let m = new Map();
+	m.set('name','Tom');
+	m.set(obj1,'hello');
+	m.set(obj2,'world');
+	/*
+	for(let key in m){
+		console.log(key);
+	}
+	*/
+
+	/*
+	for(let key of m.keys()){
+		console.log(key);
+	}
+	
+	for(let value of m.values()){
+		console.log(value);
+	}
+	
+	for(let entry of m.entries()){
+		console.log(entry);
+	}
+	*/
+	m.forEach(function(value,key){
+		console.log('value::',value);
+		console.log('key::',key);
+	})
+
+
+	console.log(m.size);
+	console.log(m);
+
+</script>
+</html>

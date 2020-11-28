@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-01移动基础.html</title>
+	<style>
+		div{
+			position: relative;
+			left:0;
+			top:100px;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<button>还原</button>
+	<button>移动</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	function Slient($elem){
+		this.$elem = $elem;
+	}
+	Slient.prototype = {
+		constructor:Slient,
+		to:function(x,y){
+			this.$elem.css({
+				left:x,
+				top:y
+			});
+		}
+	}
+	var move = new Slient($('div'))
+	$('button').eq(0).on('click',function(){
+		move.to(0,100)
+	});
+	$('button').eq(1).on('click',function(){
+		move.to(200,200)
+	});	
+</script>
+</html>

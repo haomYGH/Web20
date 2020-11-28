@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{margin: 0;padding: 0}
+		li{list-style: none;}
+		.search-item{
+			width: 200px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="search">
+		<form action="https://suggest.taobao.com" class="search-form">
+			<input type="text" class="search-input" autocomplete="off" name="p">
+			<input type="submit" class="search-btn">
+		</form>
+		<ul class="search-layer">
+			<!-- <li class="search-item">1</li>
+			<li class="search-item">2</li>
+			<li class="search-item">3</li> -->
+		</ul>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/showhide.js"></script>
+<script src="js/search-基本.js"></script>
+<script>
+	$(function(){
+		var $search=$('.search');
+		$search.search({
+		});	
+	})
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>001-注册全局组件.html</title>
+</head>
+<body>
+    <div id="app">
+        {{count}}实例上的data
+        <hr>
+        <button-counter></button-counter>
+        <!-- 组件之间互不影响 -->
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    //全局注册的行为必须在根 Vue 实例 (通过 new Vue) 创建之前发生
+    Vue.component('button-counter', {
+        data(){//组件的data选项必须是一个函数
+            return {
+                count: 0
+            }
+        },
+        template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+    })
+    //实例化Vue
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            count:1
+        }
+    })
+</script>
+</html>

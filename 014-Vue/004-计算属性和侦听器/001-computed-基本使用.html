@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{title01}}</h2>
+        <h2>{{title02}}</h2>
+        <h1>{{titleH1}}</h1>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            title01:'今天->',
+            title02:'明天'
+        },
+        computed:{
+            titleH1(){//仅读取
+                // this.title01 + this.title02
+                return this.title01 + this.title02
+            }
+        }
+    });
+</script>
+</html>

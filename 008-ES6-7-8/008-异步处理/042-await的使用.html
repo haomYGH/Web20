@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>042-await的使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//await必须在async函数体内部使用
+	//遇见await会等待await后面的程序执行完毕再执行下面的代码
+	/*
+	async function fn(){
+		const data1 = await 'data1 ok';
+		console.log('data1::',data1);
+		const data2 = await 'data2 ok'
+		console.log('data2::',data2);
+
+		return data2;
+	}
+	// fn();
+	const p = fn();
+	p.then(data=>{
+		console.log(data);
+	})
+	*/
+	const promise = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			// resolve('get timer ok')
+			reject('get timer err');
+		},200);
+	})
+	async function fn(){
+		try{
+			const data1 = await promise;
+			console.log('data1::',data1);
+			return data1;
+		}catch(err){
+			console.log(err)
+		}
+		
+	}
+	// fn();
+	const p2 = fn();
+	p2
+	.then(data=>{
+		console.log(data)
+	})
+</script>
+</html>

@@ -1,0 +1,139 @@
+p{
+	color: red;
+}
+
+/*我是注释*/
+//我是注释2
+
+/*变量*/
+@w:100px;
+@h:200px;
+@bg:#ff0;
+
+.box1{
+	width: @w;
+	height: @h;
+	margin-bottom: 8px;
+	background-color: @bg;
+}
+.box2{
+	/*
+	width: @w;
+	height: @h;
+	margin-bottom: 8px;
+	background-color: @bg;
+	*/
+	.box1;
+	border: 10px solid #00f;
+}
+.border-r(@bd){
+	-o-border-radius:@bd;
+	-webkit-border-radius:@bd;
+	-moz-border-radius:@bd;
+	-ms-border-radius:@bd;
+	border-radius: @bd;
+}
+.border-r-df(@bd:15px){
+	-o-border-radius:@bd;
+	-webkit-border-radius:@bd;
+	-moz-border-radius:@bd;
+	-ms-border-radius:@bd;
+	border-radius: @bd;
+}
+.box3{
+	.box2;
+	.border-r(20px);
+	//.border-r();错误写法
+}
+.box4{
+	.box2;
+	.border-r-df(40px);
+}
+
+
+.trangle(@_,@w,@c){
+	width: 0;
+	height: 0;
+	border-style: solid;
+}
+/*
+.trangle(top){
+	border-width: 50px;
+	border-color: #f00 transparent transparent transparent;
+}
+.trangle(right){
+	border-width: 50px;
+	border-color:transparent #f00 transparent transparent;
+}
+.trangle(bottom){
+	border-width: 50px;
+	border-color:transparent transparent #f00 transparent;
+}
+.trangle(left){
+	border-width: 50px;
+	border-color:transparent transparent transparent #f00;
+}
+*/
+.trangle(top,@w,@c){
+	border-width: @w;
+	border-color: @c transparent transparent transparent;
+}
+.trangle(right,@w,@c){
+	border-width: @w;
+	border-color:transparent @c transparent transparent;
+}
+.trangle(bottom,@w,@c){
+	border-width: @w;
+	border-color:transparent transparent @c transparent;
+}
+.trangle(left,@w,@c){
+	border-width: @w;
+	border-color:transparent transparent transparent @c;
+}
+.box5{
+	.trangle(bottom,60px,#f00);
+}
+ul{
+	list-style: none;
+	width: 500px;
+	// height: 500px;
+	border: 1px solid #000;
+	li{
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
+		a{
+			text-decoration: none;
+			float: left;
+		}
+		span{
+			float: right;
+		}
+		&:hover{
+			background-color: red;
+		}
+	}
+}
+
+.calc-fs(@fs){
+	font-size: @fs + 10px;
+}
+.box6{
+	// .calc-fs(10px);
+}
+.box7{
+	font-size: ~'calc(10px+10px)';
+}
+.box8{
+	.box1 !important;
+}
+
+.setAttr(@attr,@val){
+	@{attr}:unit(@val,px);
+}
+.box9{
+	.setAttr(width,100);
+	.setAttr(font-size,30);
+	height: 200px;
+	background-color: red;
+}

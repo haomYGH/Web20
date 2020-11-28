@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax请求数据</title>
+</head>
+<body>
+	<button id="btn">点击获取</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		var oAjax = new XMLHttpRequest();
+		// oAjax.open('GET','http://127.0.0.1:3000/01-obj1.json',true);
+		oAjax.open('GET','http://127.0.0.1:3000/getData?name=Tom',true);
+		oAjax.send();
+		oAjax.onreadystatechange = function(){
+			if(oAjax.readyState == 4){
+				if(oAjax.status == 200){
+					try{
+						var obj = JSON.parse(oAjax.responseText);
+						console.log(obj);
+					}catch(err){
+						console.log(err);
+					}
+				}else{
+					console.log('failed request,status code = '+oAjax.status)
+				}
+			}
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if判断语句</title>
+</head>
+<body>
+    <div id="app">
+        <input v-model.lazy="score" type="text">
+        <!-- <p>分数：<span v-if="score < 60">不及格</span><span v-else>及格</span></p> -->
+        <p v-if="score < 60">不及格</p>
+        <p v-else-if="score < 80">及格</p>
+        <p v-else-if="score < 90">良好</p>
+        <p v-else>优秀</p>
+        <!-- 如果小于60则为不及格，否则：小于80为及格，小于90为良好，都不符合则为大于90，优秀。(其中如果不满足上一个条件则下个条件就会取上一个条件的反向) -->
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            score:'60'
+        }
+    });
+</script>
+</html>

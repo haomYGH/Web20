@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>045-基于面向对象的构造函数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype = {
+		constructor:Person,
+		showName:function(){
+			console.log('I am '+this.name);
+		},
+		showAge:function(){
+			console.log('I am '+this.age +' years old')
+		}
+	}
+
+
+
+	function Student(name,age,major){
+		Person.call(this,name,age);
+		this.major = major;
+	}
+	/*
+	Student.prototype = Person.prototype;
+	Student.prototype.showMajor = function(){
+		console.log('I am from '+this.major);
+	}
+	*/
+	Student.prototype = Object.create(Person.prototype);
+	Student.prototype.constructor = Student;
+	Student.prototype.showMajor = function(){
+		console.log('I am from '+this.major);
+	}
+
+	let p1 = new Person('Tom',18);
+	// p1.showName();
+	// p1.showAge();
+	p1.showMajor();
+	let t1 = new Student('Leo',20,'computer');
+	t1.showMajor();
+</script>
+</html>

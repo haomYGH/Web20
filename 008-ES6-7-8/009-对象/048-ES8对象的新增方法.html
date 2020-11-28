@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>048-ES8对象的新增方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	const {
+		keys,
+		entries,
+		values,
+		getOwnPropertyDescriptors,
+		assign,
+		is
+	} = Object;
+
+
+	const obj = {
+		name:'Tom',
+		age:20,
+		sex:'male'
+	}
+	Object.defineProperty(obj,'legs',{
+		value:2,
+		enumerable:false
+	})
+
+	console.log('obj::',obj);
+	console.log(keys(obj));
+	console.log(entries(obj));
+	console.log(values(obj));
+	console.log(getOwnPropertyDescriptors(obj));
+
+	const DEFAULT = {
+		js:true,
+		mode:'fade'
+	}
+	const options = {
+		js:false
+	}
+	console.log('DEFAULT::',DEFAULT);
+	console.log('options::',options);
+	console.log(assign({},DEFAULT,options));
+	console.log(assign([11,22,33,44],[55,66,77,88,99]));
+	//{0:11,1:22,2:33,3:44} {0:55,1:66,2:77,3:88}
+
+
+	console.log("'1' === 1",'1' === 1);//false true
+	console.log("is('1',1)",is('1',1));
+	console.log("-0 === +0",-0 === +0);
+	console.log("is(-0,+0)",is(-0,+0));
+	console.log("NaN === NaN",NaN === NaN);
+	console.log("is(NaN,NaN)",is(NaN,NaN));
+</script>
+</html>

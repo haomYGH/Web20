@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- 布局 -->
+<html lang="en">
+<head>
+<!-- 上 -->
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="common.css">
+	{% block head %}{% endblock %}
+</head>
+<body>
+<!-- 中	 -->
+	<nav>顶部</nav>
+	<section>{% block content %}{% endblock %}</section>
+	<footer>底部</footer>
+</body>
+<!-- 下 -->
+<script src="js/jquery-1.12.4.js"></script>
+{% block footer %}{% endblock %}
+<!-- 包含模板 -->
+{% include "./footer.html" %}
+</html>

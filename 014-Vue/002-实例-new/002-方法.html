@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实例属性和方法</title>
+</head>
+<body>
+    <div id="app">
+        <p ref="p1">{{message}}</p>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    //Vue 实例还暴露了一些有用的实例属性与方法。它们都有前缀 $
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message:'this is vue app'
+        }
+    });
+    //实例属性
+    console.log(vm.$data)
+    console.log(vm.$el)
+    console.log(vm.$refs);//一个对象，持有注册过 ref 特性 的所有 DOM 元素和组件实例。
+    //实例方法(动态)
+    //1.  vm.$watch( expOrFn, callback, [options] )
+    vm.$watch('message',function(){console.log('message有改动')});//控制台输入vm.message='123'修改message后即可触发此方法
+    //2.  vm.$destroy()
+    vm.$destroy();//卸载实例
+</script>
+</html>

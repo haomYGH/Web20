@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量声明的提升</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var a=10;
+	function test(){
+		a=100;//函数内部已经定义了一个a。则这里仅仅是改变了函数内部的a值
+		console.log(a);
+		console.log(this.a);//this谁调用，定义域就指向谁
+		var a;
+		console.log(a);
+	}
+	test();//100 10 100
+</script>
+</html>

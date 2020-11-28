@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单页布局</title>
+	<style>
+		*{margin: 0;padding: 0}
+		body{
+			flex-direction: column;
+			display: flex;
+			height: 100vh;
+		}	
+		header{
+			background-color: blue;
+		}	
+		section{
+			flex-grow: 1;
+			background-color: pink;
+		}	
+		footer{
+			background-color: gold;
+		}	
+		header,
+		footer{
+			height: 10vh;
+		}
+	</style>
+</head>
+<body>
+	<!-- 思路：先确定排版方向，然后给容器高度划分为100等份。再将首尾分成自己想要分的等份，最后让其他部分等分容器剩余空间。 -->
+	<header>header</header>
+	<section>
+		<nav>nav</nav>
+		<div class="main">main</div>
+		<aside>aside</aside>
+	</section>
+	<footer>footer</footer>
+</body>
+</html>

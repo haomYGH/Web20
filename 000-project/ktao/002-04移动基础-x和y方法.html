@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>防止多次点击</title>
+	<style>
+		div{
+			position: relative;
+			left:0;
+			top:50px;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<button>移动x</button>
+	<button>移动y</button>
+	<button>复原</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	function Slient($elem){
+		this.$elem = $elem;
+		this.currentX = parseFloat(this.$elem.css('left'));//获取最新的left值
+		this.currentY = parseFloat(this.$elem.css('top'));//获取最新的left值
+	}
+	Slient.prototype = {
+		constructor:Slient,
+		to:function(x,y){
+			x = (typeof x == 'number') ? x : this.currentX;//number为小写
+			y = (typeof y == 'number') ? y : this.currentY;
+			if(this.currentX == x && this.currentY == y) return;
+			this.$elem.trigger('move');
+			this.$elem.css({
+				left:x,
+				top:y
+			});
+			this.$elem.trigger('moved');
+			this.currentX = x;
+			this.currentY = y;
+		},
+		x:function(x){
+			if(this.currentX == x) return;
+			this.to(x)
+		},
+		y:function(y){
+			if(this.currentY == y) return;
+			this.to(null,y)
+		}
+	}
+	var move = new Slient($('div'));
+
+	$('div').on('move moved',function(ev){
+		console.log(ev.type)
+	});
+	$('button').eq(0).on('click',function(){
+		move.x(100)
+	});
+	$('button').eq(1).on('click',function(){
+		move.y(200)
+	});	
+	$('button').eq(2).on('click',function(){
+		move.to(0,50)
+	});	
+</script>
+</html>

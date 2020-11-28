@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>005-组件传值-基础.html</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 1)向todo-item组件传递task -->
+        <todo-item task="吃饭"></todo-item>
+    </div>
+    <!-- 注意：模板需要定义在Vue所属的DOM元素外 -->
+    <template id="todo-item">
+        <div>{{task}}</div>
+        <!-- 这里的{{task}}是从自己组件的props里拿到的，如果自身data函数的返回对象中也有同名变量，会使用props里的值。尽量避免同名 -->
+    </template>
+    
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var TodoItem = Vue.extend({
+        data(){
+            return {
+                
+            }
+        },
+        template:'#todo-item',
+        props:{
+            task:String,//2)组件拿到传递过来的task,并进行简单的格式化
+        }
+    });
+    var vm = new Vue({
+        el:'#app',
+
+        components:{
+            'todo-item':TodoItem
+        }
+    });
+</script>
+</html>

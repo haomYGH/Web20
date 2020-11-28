@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>004-过滤器-局部.html</title>
+</head>
+<body>
+    <div id="demo">
+        <div>
+            <!-- <p>{{'￥'+price.toFixed(2)}}</p> -->
+            <p>{{price | toPrice}}</p>
+        </div>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    new Vue({
+        el:'#demo',
+        data:{
+            price:10
+        },
+        filters: {
+            toPrice: function (value) {
+            return '￥'+value.toFixed(2)
+        }
+        }
+    });
+</script>
+</html>

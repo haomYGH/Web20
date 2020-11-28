@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-06移动共通-04+05.html</title>
+	<style>
+		div{
+			position: relative;
+			left:0;
+			top:50px;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<button>移动x</button>
+	<button>移动y</button>
+	<button>Slient复原</button>
+	<br>
+	<button>Js移动x</button>
+	<button>Js移动y</button>
+	<button>Js复原</button>
+
+	<div class="transition"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	function Slient($elem){
+		this.$elem = $elem;
+		this.currentX = parseFloat(this.$elem.css('left'));//获取最新的left值
+		this.currentY = parseFloat(this.$elem.css('top'));//获取最新的left值
+	}
+	Slient.prototype = {
+		constructor:Slient,
+		to:function(x,y){
+			x = (typeof x == 'number') ? x : this.currentX;//number为小写
+			y = (typeof y == 'number') ? y : this.currentY;
+			if(this.currentX == x && this.currentY == y) return;
+			this.$elem.trigger('move');
+			this.$elem.css({
+				left:x,
+				top:y
+			});
+			this.$elem.trigger('moved');
+			this.currentX = x;
+			this.currentY = y;
+		},
+		x:function(x){
+			// if(this.currentX == x) return;
+			this.to(x)
+		},
+		y:function(y){
+			// if(this.currentY == y) return;
+			this.to(null,y)
+		}
+	}	
+	function Js($elem){
+		this.$elem = $elem;
+		this.$elem.removeClass('transition');//css过渡效果会影响到js动画
+		this.currentX = parseFloat(this.$elem.css('left'));//获取最新的left值
+		this.currentY = parseFloat(this.$elem.css('top'));//获取最新的left值
+	}
+	Js.prototype = {
+		constructor:Js,
+		to:function(x,y){
+			x = (typeof x == 'number') ? x : this.currentX;//number为小写
+			y = (typeof y == 'number') ? y : this.currentY;
+			if(this.currentX == x && this.currentY == y) return;
+			this.$elem.trigger('move');
+			console.log(x,y)
+			this.$elem
+			.stop()
+			.animate({
+				left:x,
+				top:y
+			},function(){
+				this.$elem.trigger('moved');
+			}.bind(this))
+			this.currentX = x;
+			this.currentY = y;
+		},
+		x:function(x){
+			if(this.currentX == x) return;
+			this.to(x)
+		},
+		y:function(y){
+			if(this.currentY == y) return;
+			this.to(null,y)
+		}
+	}
+	var slientMove = new Slient($('div'));
+	var jsMove = new Js($('div'));
+
+	$('div').on('move moved',function(ev){
+		console.log(ev.type)
+	});
+	$('button').eq(0).on('click',function(){
+		slientMove.x(100)
+	});
+	$('button').eq(1).on('click',function(){
+		slientMove.y(200)
+	});	
+	$('button').eq(2).on('click',function(){
+		slientMove.to(0,50)
+	});	
+	$('button').eq(3).on('click',function(){
+		jsMove.x(200)
+	});	
+	$('button').eq(4).on('click',function(){
+		jsMove.y(200)
+	});	
+	$('button').eq(5).on('click',function(){
+		jsMove.to(0,50)
+	});	
+</script>
+</html>

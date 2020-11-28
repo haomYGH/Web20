@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JQ对象上的方法</title>
+</head>
+<body>
+	<button>点击设置data</button>
+	<ul>
+		<li data-active='menu'>1</li>
+		<li class="li1">2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$lis = $('li');
+		//获取data上的值
+		console.log($lis.data('active'));//menu
+		//设置data上的值
+		console.log($('.li1').data('s','6'));//不会html，因为他存在了jQuery.cache缓存中
+
+	})
+</script>
+</html>

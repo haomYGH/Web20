@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据data</title>
+</head>
+<body>
+    <div id="app">
+        <p ref="p1">{{message}}</p>
+    </div>
+</body>
+<script src="/gitee-ygh/Web20/lib/js/vue.js"></script>
+<script>
+    //当一个 Vue 实例被创建时，它将 data 对象中的所有的属性加入到 Vue 的响应式系统中
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message:'this is vue app'
+        }
+    });
+    //证明vm.$el就是DOM元素,(DOM元素就是标签及标签里面所有)
+    console.log(vm.$el === document.getElementById('app'));//true
+    console.log(vm.$data.message)
+    var message2= vm.$data.message;
+    console.log(message2)
+</script>
+</html>

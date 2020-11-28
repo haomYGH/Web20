@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-箭头函数中this指向问题.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//函数中this指向问题:谁在调用该函数,this指向谁
+	/*
+	var id = 50;
+	function Timer(){
+		//var {}
+		// this = {id:20};
+		this.id = 20;
+		// console.log(this);
+		setTimeout(function(){
+			console.log(this);
+			console.log(this.id);//20 50
+		},200);
+
+		//return this;
+	}
+	let timer = new Timer();
+	*/
+
+	var id = 50;
+	function Timer(){
+		//this = {id:20}
+		this.id = 20;
+		window.setTimeout(()=>{
+			console.log(this);
+			console.log(this.id);
+		},200)
+	}
+	let timer = new Timer();
+</script>
+</html>

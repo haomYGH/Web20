@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-对象的深copy.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let obj1 = {
+		name:'Tom',
+		age:18,
+		friends:{name:'Leo',age:20},
+		pets:['cat','tigger']
+	}
+	// let obj2 = {}
+	function getDataType(data){
+		if(data instanceof Array){
+			return 'array'
+		}else if(data instanceof Object){
+			return 'object'
+		}
+	}
+	// console.log(getDataType({}));
+	function deepCopy(data){
+		let result;
+		//1.判断数据类型
+		let type = getDataType(data);
+		// console.log(type);
+		if(type == 'array'){
+			result = []
+		}else if(type == 'object'){
+			result = {};
+		}else{
+			return data;
+		}
+		//2.循环遍历数组或对象
+		for(let key in data){
+			if(getDataType(data[key]) == 'array' || getDataType(data[key]) == 'object'){
+				result[key] = deepCopy(data[key])
+			}else{
+				result[key] = data[key];
+			}
+		}
+
+		// console.log(result)
+		return result;
+	}
+	let obj2 = deepCopy(obj1);
+	obj1.name = 'Petter';
+	obj1.friends.age = 99;
+	obj1.pets.push('dog');
+	console.log('obj1::',obj1);
+	console.log('obj2:::',obj2);
+
+	console.log(obj1 === obj2);
+</script>
+</html>

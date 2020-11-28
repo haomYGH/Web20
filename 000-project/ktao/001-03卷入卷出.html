@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>卷入卷出</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<button>卷出</button>
+	<button>卷入</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var slient = {
+			init:function($elem){
+				if($elem.is(':hidden')){
+					$elem.data('state','hidden')
+					// console.log($elem.data('state'));打印添加的属性
+				}else{
+					$elem.data('state','show')
+				}
+			},
+			slideDown:function($elem){
+				if($elem.data('state')=='hidden') return;
+				if($elem.data('state')=='hide') return;
+				$elem.trigger('hide').data('state','hide');
+				$elem.slideDown();
+				$elem.trigger('hiden').data('state','hidden');
+			},
+			slideUp:function($elem){
+				if($elem.data('state')=='shown') return;
+				if($elem.data('state')=='show') return;
+				$elem.trigger('show').data('state','show');
+				$elem.slideUp();
+				$elem.trigger('shown').data('state','shown');
+			}
+		}
+		var $elem = $('div');
+		//监听事件
+		$elem.on('show shown hide hiden',function(ev){
+			if(ev.type == 'show'){
+				console.log('show')
+			}else if(ev.type == 'shown'){
+				console.log('shown')
+			}else if(ev.type == 'hide'){
+				console.log('hide')
+			}else if(ev.type == 'hiden'){
+				console.log('hiden')
+			}
+		})
+		slient.init($elem);
+		$('button').eq(0).on('click',function(){
+			slient.slideDown($elem);
+		})
+		$('button').eq(1).on('click',function(){
+			slient.slideUp($elem);
+		})
+	})
+</script>
+</html>

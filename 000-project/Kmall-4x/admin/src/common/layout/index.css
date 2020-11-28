@@ -1,0 +1,7 @@
+
+/* 尝试引用图片 */
+.site-layout-background{
+    background-image: url('./papi003.jpg');
+    background-repeat:no-repeat;
+    background-position:center;
+}

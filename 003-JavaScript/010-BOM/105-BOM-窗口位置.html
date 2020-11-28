@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>105-BOM-窗口位置.html</title>
+</head>
+<body>
+	<pre style="font-size: 24px;font-family: Georgia;">
+		浏览器窗口顶部(浏览器最外层,不是视口body)距离屏幕的距离。
+	</pre>
+</body>
+<script>
+	console.log("window.screenTop:",window.screenTop);
+	console.log("window.screenLeft:",window.screenLeft);
+	console.log("window.screenY:",window.screenY);
+	console.log("window.screenX:",window.screenX);	
+
+	var iTop = 0;
+
+	/*
+	if(window.screenTop){
+		iTop = window.screenTop;
+	}else{
+		iTop = window.screenY;
+	}
+	
+
+	window.screenTop ? iTop = window.screenTop : iTop = window.screenY;
+	*/
+
+	iTop = window.screenTop || window.screenY;
+
+	console.log(iTop);
+
+
+
+</script>
+</html>

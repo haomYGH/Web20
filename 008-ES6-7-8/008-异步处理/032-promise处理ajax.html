@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-promise处理ajax.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.min.js"></script>
+<script>
+	function getDataPromise(url){
+		return new Promise((resolve,reject)=>{
+			$.ajax({
+				url:url,
+				success:(data)=>{
+					resolve(data)
+				},
+				error:(jqXHR,statusMsg)=>{
+					reject(statusMsg)
+				}
+			})
+		})
+	}
+
+	// console.log(getDataPromise('http://api.github.com/users/AIcolonel'));
+	const p1 = getDataPromise('http://api.github.com/users/AIcolonel')
+	p1
+	.then((data)=>{
+		// console.log(data)
+		return getDataPromise(data.followers_url);
+	})
+	.then((data)=>{
+		// console.log(data);
+		return getDataPromise(data[0].followers_url);
+	})
+	.then((data)=>{
+		console.log(data)
+	})
+	.catch(err=>{
+		console.log(err);
+	})
+
+
+
+
+
+
+</script>
+</html>

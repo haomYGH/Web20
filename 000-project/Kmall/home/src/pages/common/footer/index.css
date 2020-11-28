@@ -1,0 +1,19 @@
+/*
+* @Author: Chen
+* @Date:   2020-08-10 10:01:42
+* @Last Modified by:   Chen
+* @Last Modified time: 2020-08-10 10:01:53
+*/
+.footer{
+    margin-top: 10px;
+    text-align: center;
+}
+.links{
+    margin-bottom: 10px;
+}
+.links .link{
+    padding:0 10px;
+}
+.copyright{
+    color: #999;
+}

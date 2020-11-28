@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.self 只有在自身触发的事件才会执行,不会隔断冒泡</title>
+    <style>
+        *{margin: 0;
+        padding: 0;}
+        .large{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+            height: 500px;
+            background-color: teal;
+        }
+        .medium{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 300px;
+            background-color: yellowgreen;
+        }
+        .small{
+            width: 150px;
+            height: 150px;
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="large" @click="clickLarge">
+            <div class="medium" @click.self="clickMedium"><!-- 我们让中号盒子只有点击中号盒子时才执行,(默认不会阻止冒泡，也不会阻断冒泡,就是如果有从下往上的冒泡，经过中间这个时，这个不会触发但会继续向上触发) -->
+                <div class="small" @click="clickSmall"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        methods:{
+            clickLarge(){
+                console.log('large...')
+            },
+            clickMedium(){
+                console.log('medium...')
+            },
+            clickSmall(){
+                console.log('small...')
+            },
+        }
+    });
+    //.self验证：
+    //点击最小的盒子控制台打印(small...  large...)
+    //点击中号的盒子，控制台打印(medium...  large...)
+    
+    //证明  .self 只有在自身触发的事件才会执行,不会隔断冒泡
+</script>
+</html>

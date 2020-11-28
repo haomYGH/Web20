@@ -1,0 +1,12 @@
+/*
+* @Author: Chen
+* @Date:   2020-08-01 17:24:21
+* @Last Modified by:   Chen
+* @Last Modified time: 2020-08-03 16:20:49
+*/
+.AdminSider a.active{
+	color: #1DA57A;
+}
+.AdminSider .ant-menu-item{
+	background: transparent !important;
+}

@@ -1,0 +1,376 @@
+/*共通*/
+.container{
+	width: 1226px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/*顶部导航*/
+	.top{
+		background: #333;
+	}
+	.top-nav{
+		float: left;
+	}
+	.top-nav .top-nav-item{
+		float: left;
+		line-height: 40px;
+		height: 40px;
+	}
+	.sep{
+		margin: 0 9px;
+		color: #424242;
+	}
+	.user-info{
+		float: right;
+		line-height: 40px;
+		height: 40px;
+		margin: 0 26px;
+	}
+	.user-info .user-info-item{
+		float: left;
+	}
+	.cart{
+		float: right;
+		height: 40px;
+		line-height: 40px;
+		background-color: #424242;
+	}
+	.cart .cart-box{
+		margin: 0 16px;
+	}
+	.cart:hover{
+		background-color: #fff;
+		color: #ff6700;
+	}
+	.cart:hover .cart-box a{
+		color: #ff6700;
+	}
+/*顶部导航*/
+
+/*主导航*/
+	.header{
+		/*height: 100px;*/
+	}
+	.logo{
+		float: left;
+		width: 55px;
+		height: 55px;
+		margin-top: 22px;
+		/*display: inline-block;*/
+		/*vertical-align: middle;*/
+		background-color: #ff6700;
+		overflow: hidden;
+		text-indent: -999px;/*文字缩进*/
+	}	
+	.logo .logo-link{
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: url(../images/logo.png) center center;
+	}
+	.header-nav{
+		float: left;
+		height: 100px;
+		line-height: 100px;
+	}
+	.header-nav .header-nav-item{
+		float: left;
+		margin-right: 20px;
+	}
+	.header-nav .header-nav-item:hover a{
+		color: #ff6700;
+	}
+	.header-nav .header-nav-item a{
+		font-size: 16px;
+		color: #333;
+	}
+	.search{
+		position: relative;
+		float: right;
+		width: 297px;
+		height: 50px;
+		margin-top: 25px;
+	}
+	.search-text{
+		float: left;
+		padding-left: 10px;
+		width: 244px;
+		height: 50px;
+		border: 1px solid #e0e0e0;
+		box-sizing: border-box;
+		outline: none;
+	}
+	.search-btn{
+		float: left;
+		width: 50px;
+		height: 50px;
+		border: 1px solid #e0e0e0;
+		box-sizing: border-box;
+		border-left: none;
+		text-align: center;
+		line-height: 50px;
+
+	}
+	.search-btn .iconfont{
+		font-size: 30px;
+		color: #616161;
+	}
+	.search-hot-words{
+		position: absolute;
+		top:17px;
+		left: 134px;
+		font-size: 9px;
+		color: #757578;
+	}
+	.search-hot-words .search-hot-words-item{
+		padding: 0 6px;
+		background: #eee;
+	}
+	.search-hot-words .search-hot-words-item:nth-child(1){
+		margin-right: 6px;
+	}
+	.search:hover .search-text,
+	.search:hover .search-btn{
+		border-color: #aaa;
+	}
+	.search-btn:hover{
+		border: none;
+		background-color: #ff6700;
+	}
+	.search-btn:hover .iconfont{
+		color: #fff;
+	}
+	.search-hot-words .search-hot-words-item:hover{
+		background-color: #ff6700;
+		color: #fff;
+	}
+	.header .search .search-keyword-list{
+		display: none;
+		position: absolute;
+		top: 50px;
+		left: 0;
+		z-index: 999;
+		width: 244px;
+		border: 1px solid #ff6700;
+		border-top: none;
+		box-sizing: border-box;
+		background-color: #fff;
+	}
+	.header .search .search-keyword-list .keyword-item{
+		height: 30px;
+		line-height: 30px;
+	}
+	.header .search .search-keyword-list .keyword-item a{
+		display: block;
+		width: 100%;
+		height: 30px;
+		box-sizing: border-box;
+		padding: 0 10px;
+	}
+	.header .search .search-keyword-list .keyword-item .keyword{
+		color: #333;
+	}
+	.header .search .search-keyword-list .keyword-item .num{
+		float: right;
+		color: #b0b0b0;
+	}
+	.header .search .search-text:focus,
+	.header .search .search-text:focus ~ .search-btn{
+		border-color: #ff6700;
+	}
+	.header .search .search-text:focus ~ .search-keyword-list{
+		display: block;
+	}
+	.header .search .search-text:focus ~ .search-hot-words{
+		display: none;
+	}
+/*主导航*/
+
+/*焦点区*/
+	.home{
+		margin-bottom: 25px;
+	}
+	.home .home-hero{
+		position: relative;
+		height: 460px;
+		margin-bottom: 15px;
+	}
+	.home-hero .cate{	
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 234px;
+		height: 100%;
+		background-color: rgb(0,0,0,0.4);
+		padding: 30px 0px;
+		box-sizing: border-box;
+		z-index: 999;
+	}
+		.cate .cate-list-item{
+			height: 40px;
+			line-height: 40px;
+		}
+		.cate .cate-list-item a{
+			color: #fff;
+			font-size: 13px;
+		}
+			.cate-list-item .cate-list-item-name{
+				float: left;
+				margin-left: 30px;
+			}
+			.cate-list-item .iconfont{
+				float: right;
+				margin-right: 22px;
+			}
+	.cate-list-item:hover{
+		background-color: #ff6700;
+	}
+	.home-hero .carousel{
+		width: 100%;
+		height: 100%;
+	}
+	.carousel .carousel-item li{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	.carousel .carousel-item li img{
+		width: 100%;
+		height: 100%;
+	}
+	.arrow{
+		position: absolute;
+		top: 50%;
+		width: 40px;
+		height: 70px;
+		margin-top: -35px;
+		text-align: center;
+		line-height: 70px;
+		background-color: gray;
+		z-index: 999;
+	}
+	.carousel .left-arrow{
+		left: 234px;
+	}
+	.carousel .right-arrow{
+		right: 0px;
+	}
+	.carousel .carousel-btn{
+		position: absolute;
+		right: 35px;
+		bottom: 27px;
+	}
+	.carousel .carousel-btn li{
+		float: left;
+		width: 10px;
+		height: 10px;
+		border: 3px solid #54746c;
+		background-color: #275d4f;
+		border-radius: 50%;
+	}
+
+	.home .hot{
+		height: 170px;
+	}
+	.hot .col1{
+		height: 100%;
+		background-color: #5f5750;
+	}
+	.col1 .hot-nav-item{
+		position: relative;
+		float: left;
+		width: 78px;
+		height: 85px;
+		text-align: center;
+		padding-top: 20px;
+		box-sizing: border-box;
+	}
+	.col1 .hot-nav-item .iconfont{
+		font-size: 25px;
+		display: block;
+	}
+	.col1 .hot-nav-item:before{
+		display: block;
+		content: "";
+		width: 1px;
+		height: 62px;
+		background-color: #8c8178;
+		opacity: 0.2;
+		position: absolute;
+		top: 13px;
+		left: 2px;
+	}	
+	.col1 .hot-nav-item:after{
+		display: block;
+		content: "";
+		width: 62px;
+		height: 1px;
+		background-color: #8c8178;
+		opacity: 0.2;
+		position: absolute;
+		top: 4px;
+		left: 10px;
+	}
+	.home .col2 .ad .ad-item{
+		float: left;
+		width: 316px;
+		margin-left: 15px;
+		box-sizing: border-box;
+	}
+	.home .col2 .ad .ad-item:first-child{
+		margin-left: 0;
+	}
+	.home .col2 .ad .ad-item img{
+		width: 100%;
+		height: 100%;
+	}
+/*焦点区*/
+
+/*主体区*/
+	.main{
+		height: 6035px;
+		background-color: #f5f5f5;
+	}
+	.main .flashsale{
+		height: 400px;
+		margin-bottom: 22px;
+	}
+	.flashsale .box-hd{
+		height: 50px;
+		background-color: red;
+		margin-bottom: 15px;
+	}
+	.flashsale .box-body{
+		height: 335px;
+	}
+	.flashsale .box-body .col1{
+		background-color: #ff67;
+		height: 335px;
+	}
+	.flashsale .box-body .col2{
+		height: 335px;
+	}
+	.flashsale .box-body .col2 .rainbow-item{
+		float: left;
+		margin-left: 14px;
+		width: 234px;
+		height: 335px;
+		background-color: #f00;
+	}
+	.flashsale .box-body .col2 .rainbow-item:first-child{
+		margin-left: 0;
+	}
+
+	.main .banner{
+		width: 100%;
+		height: 120px;
+		background-color: green;
+	}
+/*主体区*/
+
+/*底部区*/
+	.footer{
+		height: 543px;
+		background-color: red;
+	}
+/*底部区

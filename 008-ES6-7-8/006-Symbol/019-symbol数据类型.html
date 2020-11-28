@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019-symbol数据类型.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	let s = new Symbol();
+	console.log(s);
+	*/
+	let obj = {
+		name:'Tom'
+	}
+	let s1 = Symbol('leo');
+	let s2 = Symbol('leo');
+	console.log(s1);
+	console.log(s2);
+	console.log(s1 === s2);
+
+	/*
+	obj.s1 = 'xf001';
+	obj.s2 = 'xf002';
+	*/
+	obj[s1] = 'xf001';
+	obj[s2] = 'xf002';
+	console.log(obj);
+	/*
+	for(let key in obj){
+		console.log(key);
+	}
+	*/
+	// console.log(Reflect.ownKeys(obj));
+	let keys = Reflect.ownKeys(obj);
+	for(let key in keys){
+		console.log(keys[key])
+		console.log(obj[keys[key]]);
+	}
+
+</script>
+</html>

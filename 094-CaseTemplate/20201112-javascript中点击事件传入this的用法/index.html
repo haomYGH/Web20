@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index.html" method="post">
+    {% csrf_token %}
+    <input type="text" name="username"/>
+    <a onclick="submit()">提交</a>
+    <a onclick="submit1(this)" data-id="007">提交</a>
+    <a id="fm">提交</a>
+
+</form>
+<script src="/gh/Web20/lib/js/jquery-1.12.4.js"></script>
+<script>
+    /*
+     绑定事件中this的用法
+    */
+    function submit() {
+        console.log(this)
+    }
+    /*
+     如果以此种方式绑定事件，括号中不传入this参数，那么this在这里代指的就是整个doucumeng对象
+     */
+    　  function submit1(ths) {
+        console.log(ths)
+    }
+     /*
+     如果以此种方式绑定事件，括号中传入this参数，那么this在这里代指的就是当前标签对象
+    */
+
+     　  $('#fm').click (function submit3() {
+         console.log(this);
+     });
+ /*
+        找到当前标签
+   如果以此种方式绑定事件，括号中不传入this参数，那么this在这里代指的就是当前标签对象
+    */
+
+
+</script>
+
+</body>
+</html>

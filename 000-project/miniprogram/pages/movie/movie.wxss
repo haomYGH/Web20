@@ -1,0 +1,2 @@
+/* pages/movie/movie.wxss */
+@import './movie-list-template/movie-list-template.wxss';

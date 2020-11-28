@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038-next方法传参.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function * gen(x){
+		console.log('gen start , x = ',x);//5
+		
+		const y = yield (x + 10);//undefined
+		
+		console.log('y = ',y);//undefined
+		
+		const z = yield (y + 20);//undefined + 20 = NaN
+
+		console.log('z = ',z);// undefined
+		
+		return (x+y+z);//NaN
+	}
+	//next方法可以带一个参数，该参数就会被当作上一个yield表达式的返回值。
+	//由于next方法的参数表示上一个yield表达式的返回值，所以在第一次使用next方法时，传递参数是无效的。
+	const g = gen(5);
+	// console.log(g);
+	/*
+	console.log(g.next());//{value:15,done:false}
+	console.log(g.next());//{value:NaN,done:false} 
+	console.log(g.next());//{value:NaN,done:true}
+	*/
+
+	const data1 = g.next(10);
+	console.log('data1:::',data1);//{value:15,done:false}
+	const data2 = g.next(20);
+	console.log('data2:::',data2);//{value:40,done:false}
+	const data3 = g.next(30);
+	console.log('data3:::',data3);//{value:55,done:true}
+</script>
+</html>

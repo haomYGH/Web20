@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-jq常见静态方法-each.html</title>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var arr = ['aa','bb','cc'];
+		var lis = $('li');
+		console.log(lis);
+		$.each(arr,function(index,value){
+			console.log(index+'---'+value)
+		})
+		var arr1 = $.each(lis,function(index,value){
+			console.log(index+'---',value)//为什么这个不能用+
+		})
+		console.log(arr1 === lis);
+	})
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-原型链.html</title>
+</head>
+<body>
+	<dl>
+		<dt>原型链:通过继承来的构造函数</dt>
+		<dd>被继承与继承之间通过__proto__连接</dd>
+		<dd>方法先从自身原型prototype上找，找不到再往上一级的prototype上面找</dd>
+	</dl>
+</body>
+<script>
+	function Father(name,age){
+		this.name=name;
+		this.age=age;
+	}
+	Father.prototype={
+		constructor:Father,
+		showName:function(){
+			console.log('I am '+this.name)
+		},
+		showAge:function(){
+			console.log('I old '+this.age)
+		}
+	}
+	/*
+//原型上的方法:
+	constructor,
+	showName,
+	showAge
+	*/
+	function Son(name,age,major){
+		Father.call(this,name,age);
+		this.major=major;
+	}
+	Son.prototype=Object.create(Father.prototype);
+	Son.prototype.constructor=Son;
+	Son.prototype.showMajor=function(){
+		console.log('My major is '+this.major)
+	}
+
+	const f=new Father('tom',18);
+
+	const s=new Son('haom',18,'English');
+
+//原型链 s -> f -> Window.Object
+	console.log(s);//__proto__: Father
+	console.log(f);//__proto__: Object
+</script>
+</html>

@@ -1,0 +1,4 @@
+01-init    npm初始化
+02-install  包的安装
+03-project 模拟项目 包管理(dev不需要要打包上线的用 --save-dev)
+04-uninstall  包的卸载(安装时用什么参数卸载就用什么参数

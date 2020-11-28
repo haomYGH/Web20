@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie浏览器端设置</title>
+</head>
+<body>
+	cookie !!
+</body>
+<script>
+	//设置cookie
+	document.cookie = 'userName=haom';
+	//设置cookie过期时间
+	var oDate = new Date();
+	oDate.setDate(oDate.getDate()+10);//这个10是加10天
+	console.log(oDate);
+	document.cookie = 'age=18;expires='+oDate;//expires=具体到期时间,缺点：受本地时间影响，如果手动改变本地时间
+	console.log(document.cookie);
+	//删除cookie (思路：改变cookie过期时间)
+	document.cookie='age=18;max-age=-1';
+</script>
+</html>

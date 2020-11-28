@@ -1,0 +1,27 @@
+/*
+* @Author: Chen
+* @Date:   2020-07-30 10:24:08
+* @Last Modified by:   Chen
+* @Last Modified time: 2020-08-08 10:56:25
+*/
+.ProductList .btn{
+	height: 44px;
+}
+.ProductList .btn-add{
+	float: right;
+}
+.imageBox li{
+	list-style: none;
+	float: left;
+	width: 100px;
+	height: 100px;
+	padding: 8px;
+	margin-left: 15px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+.imageBox li img{
+	width: 100%;
+	height: 100%;
+}

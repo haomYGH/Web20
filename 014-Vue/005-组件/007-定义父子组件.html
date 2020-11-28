@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定义父子组件</title>
+</head>
+<body>
+    <div id="demo">
+        <todo-item></todo-item>
+    </div>
+    <!-- 定义模板 -->
+    <template id="todo-item">
+        <div>
+            <task></task>
+            <dateline></dateline>
+        </div>
+    </template>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    //定义模板
+    var Task = Vue.extend({
+        data(){
+            return {
+                tag:'任务：'
+            }
+        },
+        template:'<span>{{tag}}吃饭</span>'
+    });
+    var Dateline = Vue.extend({
+        data(){
+            return {
+                tag:'截止时间：'
+            }
+        },
+        template:'<span>{{tag}}今天</span>'
+    });
+    var TodoItem = Vue.extend({
+        template:'#todo-item',
+        components:{
+            task:Task,
+            dateline:Dateline
+        }
+    });
+    
+    //组件注册
+    Vue.component('todo-item',TodoItem);
+    // Vue.component('task',Task);//练习注册局部组件
+    // Vue.component('dateline',Dateline);
+    //实例
+    var vm = new Vue({
+        el:'#demo',
+    });
+</script>
+</html>

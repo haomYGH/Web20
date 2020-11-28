@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>039-for-of遍历遍历器对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function * gen(){
+		yield 1;
+		yield 2;
+		yield 3;
+		yield 4;
+		yield 5;
+	}
+	const g = gen();
+	/*
+	console.log(g.next().value);
+	console.log(g.next().value);
+	console.log(g.next().value);
+	console.log(g.next().value);
+	console.log(g.next().value);
+	*/
+	console.log(g);
+	for(v of g){
+		console.log(v);
+	}
+</script>
+</html>

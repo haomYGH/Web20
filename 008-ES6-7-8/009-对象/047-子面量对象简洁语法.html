@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>047-子面量对象简洁语法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	const obj = {
+		name:'Tom',
+		age:20
+	}
+	*/
+	const username = 'Leo';
+	const sex = 'male';
+	/*
+	const obj = {
+		username:username,
+		sex:sex
+	}
+	*/
+	/*
+	const obj = {
+		username,
+		sex,
+		showName:function(){
+			console.log(this.username)
+		},
+		showSex:function(){
+			console.log(this.sex);
+		}
+	}
+	*/
+	const obj = {
+		username,
+		sex,
+		showName(){
+			console.log(this.username)
+		},
+		showSex(){
+			console.log(this.sex);
+		}
+	}
+	/*
+	const obj = {
+		username,
+		sex,
+		showName:()=>{
+			console.log(this);
+			console.log(this.username)
+		},
+		showSex:()=>{
+			console.log(this.sex);
+		}
+	}
+	*/
+	console.log(obj);
+	obj.showName();
+	obj.showSex();
+</script>
+</html>

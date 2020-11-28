@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>013-原生DOM阻止冒泡.html</title>
+    <style>
+        *{margin: 0;
+        padding: 0;}
+        .large{
+            width: 300px;
+            height: 300px;
+            background-color: yellowgreen;
+            padding-top: 75px;
+            box-sizing: border-box;
+        }
+        .small{
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="large" @click="printLarge">
+            <div class="small" @click="printsmall($event)"></div>
+            <!-- 
+                注意：$event为固定语法，传该参数时位置可以不固定。接受参数时位置要对准
+             -->
+        </div>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        methods:{
+            printLarge(){
+                console.log('large...')
+            },
+            printsmall(ev){
+                // console.log(ev)
+                ev.stopPropagation()//阻止冒泡
+                console.log('small...')
+            }
+        }
+    });
+</script>
+</html>

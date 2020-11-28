@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data向组件传递多个值</title>
+</head>
+<body>
+    <div id="demo">
+        <ul>
+            <li>吃饭</li>
+            <todo-item
+                v-for="(item,index) in items"
+                :key="index"
+                :task="item.task"
+                :id="item.id"
+            >
+            </todo-item>
+        </ul>
+        <!-- 通过定义属性的方式传值(绑定属性可以让属性值分离): -->
+        <!-- 父元素todo-item向子元素传值，子元素li通过props接收来自父组件的数据 -->
+    </div>
+    <template id="todo-item">
+        <li>{{id}}---{{task}}</li>
+    </template>
+    
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var TodoItem = Vue.extend({
+        data(){
+            return {
+                
+            }
+        },
+        template:'#todo-item',
+        props:{
+            task:String,
+            id:Number
+        }
+    });
+    var vm = new Vue({
+        el:'#demo',
+        data:{
+            items:[
+                {id:0,task:"睡觉"},
+                {id:1,task:"敲代码"}
+            ]
+        },
+        components:{
+            'todo-item':TodoItem
+        }
+    });
+</script>
+</html>

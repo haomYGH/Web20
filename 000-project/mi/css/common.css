@@ -1,0 +1,42 @@
+/*
+* @Author: haom
+* @Date:   2020-05-27 21:43:09
+* @Last Modified by:   haom
+* @Last Modified time: 2020-07-05 21:37:55
+*/
+/*容器*/
+.container{
+	width: 1226px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/*清楚浮动*/
+.clearfix:after{
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+	content: '';
+}
+.clearfix{
+	*zoom:1;
+}
+
+a{
+	text-decoration: none;
+	font-size: 12px;
+}
+a:link{
+	color: #999;
+}
+a:hover{
+	color: #fff;
+}
+.col1{
+	float: left;
+	width: 234px;
+}
+.col2{
+	float: right;
+	width: 978px;
+}

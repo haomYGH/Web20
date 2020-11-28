@@ -1,0 +1,69 @@
+//使用边框画三角形
+.triangle0{
+	width: 0;
+	height: 0;
+	border-width: 100px;
+	border-style: solid;
+	border-color: #f00 transparent transparent transparent;
+}
+//匹配模式：1.简单匹配
+.triangle1(top){
+	width: 0;
+	height: 0;
+	border-width: 100px;
+	border-style: solid;
+	border-color: #ff0 transparent transparent transparent;	
+}
+.box1{
+	.triangle1(top);
+}
+//2.任意匹配@_
+.triangle2(@_){
+	width: 0;
+	height: 0;	
+	border-style: solid;
+}
+.triangle2(right){
+	border-width: 100px;
+	border-color: transparent #00f transparent transparent;	//上右下左，顺时针
+}
+
+.box2{
+	.triangle2(right);
+}
+//3.任意匹配（参数需要和调用时的参数个数保持一致
+.triangle3(@_,@w,@c){
+	width: 0;
+	height: 0;	
+	border-style: solid;
+}
+.triangle3(right,@w,@c){
+	border-width: @w;
+	border-color: transparent @c transparent transparent;	//上右下左，顺时针
+}
+
+.box3{
+	.triangle3(right,200px,green)
+}
+//多个调用
+.triangle(@_,@w,@c){
+	width: 0;
+	height: 0;	
+	border-style: solid;
+}
+.triangle(top,@w,@c){
+	border-width: @w;
+	border-color: @c transparent transparent transparent;	//上右下左，顺时针
+}
+.triangle(right,@w,@c){
+	border-width: @w;
+	border-color: transparent @c transparent transparent;	//上右下左，顺时针
+}
+.triangle(bottom,@w,@c){
+	border-width: @w;
+	border-color: transparent transparent @c transparent;	//上右下左，顺时针
+}
+.triangle(left,@w,@c){
+	border-width: @w;
+	border-color: transparent transparent transparent @C;	//上右下左，顺时针
+}

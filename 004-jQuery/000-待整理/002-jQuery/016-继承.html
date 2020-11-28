@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES5和ES6环境下的继承</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+//1.原型链的继承
+	function Foo(name) {
+    this.name = name;
+	}
+	Foo.prototype.age = function() {
+	    console.log('父类：' + this.name);
+	};
+	function fn (name) {
+	    this.name = name;
+	}
+	fn.prototype = new fn();
+	fn.prototype.age = function() {
+	    console.log('子类：' + this.name);
+	};
+	var a = new fn('lisi');
+	a.age();
+	//缺点：
+	*/
+	/*
+//2.类式继承
+	function Foo(name) {
+	    this.name = name;
+	}
+	Foo.prototype.age = function() {
+	    console.log('父类：' + this.name);
+	};
+	Foo.prototype.obj = function() {
+	    console.log('hello world');
+	};
+	function fn (name) {
+	    Foo.call(this,name);
+	}
+	fn.prototype.age = function() {
+	    console.log('子类：' + this.name);
+	};
+	var a = new fn('lisi');
+	a.age();
+	a.obj();    //TypeError: a.obj is not a function	
+	//通过call的方法，将this绑定在Foo构造函数上运行，但是会导致没有自己的原型对象，无法共享原型的方法和属性。
+	*/
+//3.组合时调用
+	/*
+	function Foo(name) {
+	    this.name = name;
+	}
+	Foo.prototype.age = function() {
+	    console.log('父类：' + this.name);
+	};
+	Foo.prototype.obj = function() {
+	    console.log('hello world');
+	};
+	function fn (name) {
+	    Foo.call(this,name);    //第二次调用
+	}
+	fn.prototype = new Foo();   //第一次调用
+	fn.prototype.constructor = fn;
+	fn.prototype.age = function() {
+	    console.log('子类：' + this.name);
+	};
+	fn.prototype.set = function() {
+	    console.log('set si es5');
+	};
+	var a = new fn('lisi');
+	a.age();
+	a.obj();
+	a.set();
+	//fn.prototype = Foo.prototype;这种方法是错误的，因为这会导致，两个函数的prototype属性发生改变，这显然是没有必要的。
+	*/
+//4.寄生组合式继承
+	/*
+	function Foo(name) {
+	    this.name = name;
+	}
+	Foo.prototype.age = function() {
+	    console.log('父类：' + this.name);
+	};
+	Foo.prototype.obj = function() {
+	    console.log('hello world');
+	};
+	function fn (name) {
+	    Foo.call(this,name);  
+	}
+	fn.prototype = Object.create(Foo.prototype);
+	//Object.create()方法:可以让Foo这个函数只执行一次。?
+	fn.prototype.constructor = fn;
+	fn.prototype.age = function() {
+	    console.log('子类：' + this.name);
+	};
+	fn.prototype.set = function() {
+	    console.log('set si es5');
+	};
+	var a = new fn('lisi');
+	a.age();
+	a.obj();
+	a.set();
+	*/
+//5.多重继承(混合继承)
+	/*
+	function foo(name) {
+	        this.name = name;
+	    }
+
+	    function fn(arr) {
+	        this.age = arr;
+	    }
+
+	    function obj(name, age) {
+	        foo.call(this, name);
+	        fn.call(this, age);
+	    }
+	    obj.prototype = Object.create(foo.prototype);
+	    Object.assign(obj.prototype, fn.prototype);
+	    obj.prototype.constructor = obj;
+	    var a = new obj('zhangsan', 18);
+	    console.log(a); //obj {name: "zhangsan", age: 18}
+	    */
+	   
+// ES6新增的extends
+//class继承
+//class是ES6新增的，通过extends实现
+	class Foo {
+	    constructor(name) {
+	        this.name = name;
+	    }
+	    age() {
+	        console.log(this.name);
+	    }
+	    obj() {
+	        console.log('hello world');
+	    }
+	}
+	class fn extends Foo {
+	    constructor(name) {
+	        super(name);
+	    }
+	    age() {
+	        console.log(`子类调用${this.name}`);
+	    }
+	}
+	var a = new fn('zhangsan');
+	a.age();
+	a.obj();
+</script>
+</html>

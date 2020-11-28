@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态组件扩展</title>
+    <style>
+        .active{
+            color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <button @click="currentTab='tab-a'">A组件</button>
+        <button @click="currentTab='tab-b'">B组件</button>
+        <component :is="currentTab"></component>
+    </div>
+    <template id="a">
+        <p>我是A组件</p>
+    </template>
+    <template id="b">
+        <div>
+            <ul>
+                <li
+                    v-for="(item,index) in articles"
+                    @click="selectB=item"
+                    :class="{active : selectB == item}"
+                >
+                    {{item.title}}
+                </li>
+            </ul>
+            <div>
+                <div v-if="selectB">
+                    {{selectB.content}}
+                </div>
+            </div>
+        </div>
+    </template>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    //注册组件(为啥要放在实例之前？)
+    Vue.component('tab-a',{
+        template:'#a'
+    });
+    Vue.component('tab-b',{
+        template:'#b',
+        data(){
+            return {
+                articles:[
+                    {
+                        title:'Vue的基本介绍',
+						content:'Vue是一个视图层的框架'
+                    },{
+                        title:'React的基本介绍',
+						content:'React也是一个视图层的框架'
+                    }
+                ],
+                selectB:null
+            }
+        }
+    });
+    //实例
+    new Vue({
+        el:'#demo',
+        data:{
+            currentTab:'tab-a'
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>049-数组新增方法.html</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script>
+	const obj = {
+		0:'aaa',
+		1:'bbb',
+		2:'ccc',
+		length:3
+	}
+	const aDiv = document.getElementsByTagName('div');
+	console.log(obj);
+	console.log(aDiv);
+
+	// console.log([...obj]);
+	// console.log([...aDiv]);
+	// console.log(Array.from(obj));
+	// console.log(Array.from(aDiv));
+
+
+	const arr = [11,54,78,32,3,96];
+	/*
+	const result = arr.find((n)=>{
+		return n > 50;
+	})
+	
+	const result = arr.find(n=>n>500);
+	console.log(result);
+	
+
+	const result = arr.findIndex(n=>n>60);
+	console.log(result);
+	*/
+	const result = arr.includes(32,0);
+	console.log(result);
+</script>
+</html>

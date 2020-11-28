@@ -1,0 +1,26 @@
+/*
+* @Author: Chen
+* @Date:   2020-08-08 16:18:31
+* @Last Modified by:   Chen
+* @Last Modified time: 2020-08-18 09:41:29
+*/
+.payment-box{
+    text-align: center;
+}
+.payment-title{
+    margin-top: 20px;
+    height: 40px;
+    line-height: 40px;
+    color:#666;
+    font-size: 16px;
+}
+.payment-tips{
+    height: 40px;
+    line-height: 40px;
+    color: #f21;
+    font-size: 16px;
+}
+.payment-qr{
+    width: 350px;
+    height: 350px;
+}

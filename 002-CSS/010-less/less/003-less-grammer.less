@@ -1,0 +1,44 @@
+/*兼容性写法
+-o-
+-webkit-
+-moz-
+-ms-
+*/
+@w:200px;
+@h:300px;
+@bg:yellow;
+//边框圆角：浏览器兼容
+.border-r(@br){
+	border-radius: @br;
+	-o-border-radius:@br;
+	-webkit-border-radius:@br;
+	-moz-border-radius:@br;
+	-ms-border-radius:@br;	
+}
+.box{
+	width: @w;
+	height: @h;
+	background-color: @bg;
+	margin-bottom: 10px;
+}
+//混合：1.基本混合
+.box1{
+	.box;
+}
+//混合2：加入变量
+.box2{
+	.box;
+	.border-r(50px);//必须传值
+}
+//混合3：混合2的基础上给变量设置默认值
+.border-r-df(@br:100px){
+	border-radius: @br;
+	-o-border-radius:@br;
+	-webkit-border-radius:@br;
+	-moz-border-radius:@br;
+	-ms-border-radius:@br;	
+}
+.box3{
+	.box;
+	.border-r-df;//可以不带括号
+}

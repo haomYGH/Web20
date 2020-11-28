@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-异步处理程序.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.min.js"></script>
+<script>
+	//1.ajax请求
+	$.getJSON('http://api.github.com/users/AIcolonel',function(data){
+		// console.log(data);
+		$.getJSON(data.followers_url,function(data){
+			// console.log(data)
+			$.getJSON(data[1].followers_url,function(data){
+				console.log(data);
+			})
+		})
+	});
+	console.log('load ajax ...');
+	//2.dom事件
+	/*
+	var img = new Image();
+	img.onload = function(){
+		console.log('load img success');
+	}
+	img.onerror = function(){
+		console.log('load img error')
+	}
+	img.src = './img/01.jpg';
+	console.log('load img ...');
+	*/
+	//3.定时器
+	/*
+	setTimeout(function(){
+		console.log('load timer success')
+	},0);
+	console.log('load timer ...');
+	*/
+</script>
+</html>

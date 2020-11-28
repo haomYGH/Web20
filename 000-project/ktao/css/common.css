@@ -1,0 +1,67 @@
+
+.container{
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+body{
+	font-size: 14px;
+}
+.transition{
+	transition: all 0.5s;
+}
+
+/*浮动相关样式开始*/
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clearfix:after{
+	content: "";
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.clearfix{
+	*zoom: 1;
+}
+/*浮动相关样式结束*/
+
+/*a链接共同样式开始*/
+a{
+	font-size: 12px;
+	text-decoration: none;
+	color: #4d555d;
+}
+a.link:hover{
+	color: #ea7469;
+}
+/*a链接共同样式结束*/
+
+/*下拉菜单共同样式开始*/
+.dropdown{
+	position: relative;
+}
+.dropdown-layer{
+	position: absolute;
+	display: none;
+	z-index: 999;
+}
+.dropdown-left{
+	left: 0;
+}
+.dropdown-right{
+	right: 0;
+}
+.dropdown-loading{
+	width: 32px;
+	height: 32px;
+	margin:13px;
+	background-image: url(../images/loading.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+/*下拉菜单共同样式结束*/

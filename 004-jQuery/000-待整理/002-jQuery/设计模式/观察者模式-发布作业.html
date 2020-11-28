@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>发布作业复习</title>
+</head>
+<body>
+	概念：两个主体，一个观察者，一个被观察者，当被观察者发生变化时，观察者会有相应的动作。
+</body>
+<script>
+	(function(w){
+		function Teacher(name){
+			this.name = name;
+			this.students = [];
+		}
+		Teacher.prototype = {
+			constructor:Teacher,
+			register:function(student){
+				this.students.push(student);
+			},
+			publish:function(msg){
+				for(var i=0;i<this.students.length;i++){
+					this.students[i].listen(msg);
+				}
+			}
+		}
+		w.Teacher = Teacher;
+	})(window);
+	(function(w){
+		function Student(name,teacher){
+			this.name = name;
+			teacher.register(this);
+		}
+		Student.prototype = {
+			constructor:Student,
+			listen:function(msg){
+				console.log(this.name+' get msg '+msg);
+			}
+		}
+		w.Student = Student;
+	})(window);
+	var t1 = new Teacher('tom');
+	var s1 = new Student('haom',t1);
+	var s1 = new Student('haom1',t1);
+	var s1 = new Student('haom2',t1);
+	var s1 = new Student('haom3',t1);
+	// console.log(s1);
+	// console.log(t1);
+	t1.publish('study');
+</script>
+</html>

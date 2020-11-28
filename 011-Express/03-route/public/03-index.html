@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+</head>
+<body>
+	<h1>this is static html</h1>
+	<button class="get1">参数方式1</button>
+	<button class="get2">参数方式2</button>
+	<button class="post">post传递参数</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$('.get1').on('click',function(){
+		$.ajax({
+			url:'/',
+			type:'get',
+			//  /?name=tom&age=18
+			data:{
+				name:'tom',
+				age:18
+			},
+			success:function(data){
+				console.log(data);
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})
+	})
+	$('.get2').on('click',function(){
+		$.ajax({
+			url:'/name/tom/age/18',
+			type:'get',
+			success:function(data){
+				console.log(data);
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})
+	})
+	$('.post').on('click',function(){
+		$.ajax({
+			url:'/',
+			type:'post',
+			data:{
+				name:'tom',
+				age:18
+			},
+			success:function(data){
+				console.log(data);
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})
+	})
+</script>
+</html>

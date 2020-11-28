@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021-闭包</title>
+	<script>
+		function fn(){
+			var n = 1;
+			function fn1(){
+				console.log(n);//1,子函数有权访问父函数中的变量
+			}
+			fn1();
+		}
+		fn();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

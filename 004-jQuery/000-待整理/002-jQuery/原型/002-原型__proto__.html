@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-原型__proto__.html</title>
+</head>
+<body>
+	<dl>
+		<dt>
+			__proto__
+		</dt>
+		<dd>这是每个对象(除null外)都会有的属性，叫做__proto__，这个属性会指向该(实例)对象的原型。</dd>
+		<dd>原型也是一个对象，上面也有__proto__</dd>
+		<dd>继承的原型的__proto__指向原型链的上一层原型(prototype)</dd>
+	</dl>
+</body>
+<script>
+	function fn(name){
+		this.name = name;
+	}
+	fn.prototype.sayName=function(){
+		console.log('I am '+this.name)
+	}
+
+	console.log(fn.prototype);
+	const fn1 = new fn('haom');
+	console.log(fn1.constructor);
+</script>
+</html>

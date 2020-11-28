@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    column-width: 250px;
+    -webkit-column-width: 250px;
+    column-gap: 5px;
+    -webkit-column-gap: 5px;
+}
+.main .box{
+    width: 260px;
+    margin: 5px 0;
+}
+.main .box img{
+    width: 100%;
+}

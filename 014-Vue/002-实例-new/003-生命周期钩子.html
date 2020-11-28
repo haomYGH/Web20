@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期</title>
+</head>
+<body>
+    <div id="app">
+        <p ref="p1">{{message}}</p>
+    </div>
+</body>
+<script src="../lib/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message:'this is vue app'
+        },
+        beforeCreate(){
+            console.log('beforeCreate...')
+        },
+        created(){
+            console.log('created...')
+        },
+        beforeMount(){
+            console.log('beforeMount...')
+        },
+        mounted(){
+            console.log('mounted...')
+            console.log(this.$el);
+            console.log(this.$data);
+            console.log(this.$refs);
+            //我们只有在挂载完毕后才能拿到全部数据,因此vue也是在挂载完毕后发送请求的            
+        },
+        beforeUpdate(){
+            console.log('beforeUpdate...')
+        },
+        updated(){
+            console.log('updated...')
+        },
+        beforeDestroy(){
+            console.log('beforeDestroy...')
+        },
+        destroyed(){
+            console.log('destroyed...')
+        },
+    });
+</script>
+</html>

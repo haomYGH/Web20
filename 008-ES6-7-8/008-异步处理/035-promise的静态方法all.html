@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>035-promise的静态方法all.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function getImagePromise(url){
+		return new Promise((resolve,reject)=>{
+			var img = new Image();
+			img.onload = function(){
+				resolve('load '+ url +' success');
+			}
+			img.onerror = function(){
+				reject('load '+ url +' error')
+			}
+			img.src = url;
+		})
+	}
+	/*
+	const p1 = Promise.resolve('ok p1');
+	const p2 = Promise.resolve('ok p2');
+	const p3 = Promise.resolve('ok p3');
+	const p4 = Promise.resolve('ok p4');
+	const p5 = Promise.reject('err p5');
+	const p6 = Promise.reject('err p6');
+
+	const promise = Promise.all([p1,p2,p3,p4,p5,p6]);
+	// console.log(promise);
+	promise
+	.then(data=>{
+		console.log(data);
+		console.log(promise);
+	})
+	.catch(err=>{
+		console.log(err);
+		console.log(promise);
+	})
+	*/
+
+
+	var imgs = ['./img/p1.jpg','./img/p2x.jpg','./img/p3.jpg']
+		.map((src)=>{
+			return getImagePromise(src);
+		})
+	// console.log(imgs);
+
+	const promise = Promise.all(imgs);
+	promise
+	.then(data=>{
+		console.log(data)
+		console.log(promise)
+	})
+	.catch(err=>{
+		console.log(err);
+		console.log(promise)
+	})
+</script>
+</html>
